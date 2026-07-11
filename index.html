@@ -129,12 +129,6 @@
   .page{display:none;}
   .page.active{display:block;}
 
-  /* 空白頁 */
-  .empty{padding:70px 30px;text-align:center;color:var(--gray);}
-  .empty .ei{font-size:40px;margin-bottom:12px;}
-  .empty .et{font-size:15px;font-weight:800;color:#8a7d6c;}
-  .empty .ed{font-size:12.5px;margin-top:8px;line-height:1.6;}
-
   /* 機票頁 */
   .tkt-hd{padding:16px 18px 4px;font-size:20px;font-weight:900;letter-spacing:.5px;}
   .tkt-hd span{font-size:13px;font-weight:600;color:var(--gray);margin-left:8px;}
@@ -173,7 +167,7 @@
   .ov-card:active{transform:scale(.99);}
   .ov-badge{flex:0 0 58px;width:58px;height:58px;border-radius:14px;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(90,60,30,.2);}
   .ov-badge.d1{background:linear-gradient(135deg,#cf3a2e,#a82c22);}
-  .ov-badge.d2{background:linear-gradient(135deg,#b3a48f,#9a8b76);}
+  .ov-badge.d2{background:linear-gradient(135deg,#4a8a3d,#3a6f30);}
   .ov-badge.d3{background:linear-gradient(135deg,#c94f8a,#a83b70);}
   .ov-badge.d4{background:linear-gradient(135deg,#8a6d4a,#6f5636);}
   .ov-badge .d{font-size:17px;font-weight:900;line-height:1;}
@@ -244,7 +238,7 @@
         </div>
         <div class="tkt-title">
           <div class="rt">KHH → GMP</div>
-          <div class="sub">高雄 → 首爾金浦 · 直飛</div>
+          <div class="sub">濟州航空 Jeju Air · 高雄 → 首爾金浦 · 直飛</div>
         </div>
         <div class="legs">
           <div class="leg">
@@ -290,7 +284,7 @@
         <thead>
           <tr>
             <th>出發/到達<br>(Departure/Arrival)</th>
-            <th>航班號<br>(Flight No.)</th>
+            <th>航空公司 / 航班號<br>(Airline / Flight)</th>
             <th>起飛時間<br>(Departure)</th>
             <th>抵達時間<br>(Arrival)</th>
             <th>艙位等級<br>(Class)</th>
@@ -299,14 +293,14 @@
         <tbody>
           <tr>
             <td>高雄 / 首爾<br><span class="rt">小港機場 / 金浦機場</span></td>
-            <td>—</td>
+            <td>濟州航空 Jeju Air</td>
             <td>2026-08-27 13:00</td>
             <td>2026-08-27 16:55</td>
             <td>STANDARD</td>
           </tr>
           <tr>
             <td>首爾 / 臺中<br><span class="rt">仁川機場 / 臺中清泉崗</span></td>
-            <td>TW0669</td>
+            <td>德威航空 TW0669</td>
             <td>2026-08-30 13:55</td>
             <td>2026-08-30 16:00</td>
             <td>經濟艙</td>
@@ -336,9 +330,9 @@
       <div class="ov-card" data-day="day2">
         <div class="ov-badge d2"><div class="d">D2</div><div class="dt">08/28 五</div></div>
         <div class="ov-body">
-          <div class="ov-area"><span class="pin">📍</span>行程調整中</div>
-          <div class="ov-desc">第 2 天行程重新規劃中，稍後補上內容。</div>
-          <div class="ov-tags"><span class="ov-tag hint">待調整</span></div>
+          <div class="ov-area"><span class="pin">📍</span>明洞 · 漢南洞 · 解放村</div>
+          <div class="ov-desc">全地鐵日落版：明洞樂天百貨＋雪濃湯午餐 → 漢南洞選品 → 解放村看日落與百萬夜景。</div>
+          <div class="ov-tags"><span class="ov-tag">中區·明洞</span><span class="ov-tag">漢南洞</span><span class="ov-tag">解放村</span></div>
         </div>
         <div class="ov-chev">›</div>
       </div>
@@ -385,7 +379,7 @@
       <div class="fr-mid"><div>約 3h55m</div><div class="line"></div><div>直飛</div></div>
       <div class="fr-col"><div class="fr-time">16:55</div><div class="fr-code">首爾 GMP</div></div>
     </div>
-    <div class="flight-note">🧳 行李：隨身 + 手提（55×40×20cm）+ 托運 15kg。抵達為韓國時間。</div>
+    <div class="flight-note">🛫 濟州航空 Jeju Air · 🧳 行李：隨身 + 手提（55×40×20cm）+ 托運 15kg。抵達為韓國時間。</div>
   </div>
 
   <div class="sec-label">今日路線 · 金浦 ▸ 新沙 ▸ 東大門</div>
@@ -628,17 +622,196 @@
 
   </div><!-- /page-day1 -->
 
-  <!-- ============ 第 2 天（待調整） ============ -->
+  <!-- ============ 第 2 天行程頁（明洞·漢南洞·解放村） ============ -->
   <div id="page-day2" class="page">
-    <div class="subbar">
-      <div class="date">08/28 <span>星期五 · 待安排</span></div>
-    </div>
-    <div class="empty">
-      <div class="ei">📝</div>
-      <div class="et">第 2 天行程調整中</div>
-      <div class="ed">這一天的內容正在重新規劃，<br>之後補上就會顯示在這裡。</div>
+
+  <div class="subbar">
+    <div class="date">08/28 <span>星期五 · 全地鐵日落版</span></div>
+    <div class="mode-row">
+      <div class="mode">🚇 大眾運輸 ▾</div>
+      <div class="sortbtn">⚡ 一鍵排序</div>
     </div>
   </div>
+
+  <div class="sec-label">今日路線 · 明洞 ▸ 漢南洞 ▸ 解放村</div>
+
+  <div class="tl">
+
+    <!-- STAGE 1 · 明洞樂天百貨 -->
+    <div class="item">
+      <div class="tcol"><div class="tm">10:00</div><div class="lb">STAGE 1</div></div>
+      <div class="ncol"><div class="node"><svg><use href="#ic-bag"/></svg></div></div>
+      <div class="content">
+        <div class="stop-c" data-map="롯데백화점 명동 본점" data-label="樂天百貨總店">
+          <div class="goarrow">➤</div>
+          <div class="stop-title">明洞 · 樂天百貨總店</div>
+          <div class="stop-sub">上午先攻百貨 · 精品、美妝與伴手禮一次購齊</div>
+          <div class="stop-tag">🛍️ 樂天百貨本店</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- transit · 百貨→午餐 -->
+    <div class="item">
+      <div class="tcol"></div>
+      <div class="ncol"><div class="node mini"><svg><use href="#ic-walk"/></svg></div></div>
+      <div class="content">
+        <div class="transit open">
+          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚶 走出百貨 · 步行 5 分入明洞主街 <span class="caret">›</span></div>
+          <div class="routes">
+            <div class="route sel">
+              <div class="route-top"><div class="route-time">約 5 分鐘 <small>步行</small></div><div class="check"></div></div>
+              <div class="segs"><span class="seg walk">🚶 離開樂天百貨</span><span class="seg walk">走進明洞巷弄</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 午餐 · 明洞 -->
+    <div class="item">
+      <div class="tcol"><div class="tm">12:00</div><div class="lb">午餐</div></div>
+      <div class="ncol"><div class="node"><svg><use href="#ic-food"/></svg></div></div>
+      <div class="content">
+        <div class="stop-c" data-map="명동" data-label="明洞">
+          <div class="goarrow">➤</div>
+          <div class="stop-title">明洞道地午餐（二選一）</div>
+          <div class="stop-sub">步行進明洞主街巷弄 · 逛街前先補好體力基底</div>
+          <div class="stop-tag">🍲 雪濃湯二選一</div>
+        </div>
+        <div class="choices">
+          <div class="choice a">
+            <div class="choice-h" data-map="미성옥 명동" data-label="味成屋">🔥 提案 A ｜ 味成屋 미성옥 <span class="pill">60 年老字號</span></div>
+            <div class="choice-b">明洞在地老饕最愛的雪濃湯！湯頭清澈卻極濃郁，滿滿軟嫩韓牛切片，靈魂是桌上無限續加的酸甜蘿蔔泡菜。藏在隱密小巷，很有深夜食堂復古氛圍。</div>
+          </div>
+          <div class="choice b">
+            <div class="choice-h" data-map="명동설농탕" data-label="明洞雪濃湯">🥣 提案 B ｜ 明洞雪濃湯 명동설농탕 <span class="pill">經典</span></div>
+            <div class="choice-b">乳白牛骨高湯長時間熬煮、不加人工調味，上桌可依口味加蝦醬、鹽與大蔥，配白飯與細麵，暖胃又好消化，非常適合當逛街前的體力基底！</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- transit · 明洞→漢南洞 -->
+    <div class="item">
+      <div class="tcol"></div>
+      <div class="ncol"><div class="node mini"><svg><use href="#ic-train"/></svg></div></div>
+      <div class="content">
+        <div class="transit open">
+          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚇 明洞 ➡️ 漢南洞（漢江鎮站）<span class="caret">›</span></div>
+          <div class="routes">
+            <div class="route sel">
+              <div class="route-top"><div class="route-time">2號→3號→6號線 <small>約 1,450 KRW</small></div><div class="check"></div></div>
+              <div class="segs"><span class="seg l2">🚈 乙支路入口 2號線 1站</span><span class="seg l3">🚈 乙支路三街轉 3號線 2站→藥水</span><span class="seg l6">🚈 藥水轉 6號線 2站→漢江鎮</span></div>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">💡 從漢江鎮站【1 號出口】出站（有上行電扶梯），提著樂天戰利品最省力！</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 2 · 漢南洞 -->
+    <div class="item">
+      <div class="tcol"><div class="tm">14:00</div><div class="lb">STAGE 2</div></div>
+      <div class="ncol"><div class="node"><svg><use href="#ic-bag"/></svg></div></div>
+      <div class="content">
+        <div class="stop-c" data-map="한남동" data-label="漢南洞">
+          <div class="goarrow">➤</div>
+          <div class="stop-title">漢南洞 · 選品散策</div>
+          <div class="stop-sub">由北向南順著漢南洞下坡路一路逛</div>
+          <div class="stop-tag">👒 帽款 · 眼鏡 · 選品 · 純素包</div>
+        </div>
+        <div class="infobox">
+          <div class="ih">🛒 由北向南 順向逛</div>
+          <ul>
+            <li><b>Awesome Needs 👒</b>：先衝設計師帽款店，試戴澎澎雲朵帽、貝雷帽與經典漁夫帽。</li>
+            <li><b>Beaker 漢南旗艦店 🛋️</b>：大馬路上大型指標複合選品店，除了潮牌服飾，必逛精緻美學家飾專區。</li>
+            <li><b>NEOTERIA 👓</b>：最火復古潮流眼鏡店，試戴 Couture 同款時髦 Y2K 鏡框，一秒變時髦。</li>
+            <li><b>Aeae 漢南旗艦店 🧢</b>：捕獲 MZ 世代最愛的水洗老帽、OVERSIZE 上衣與美式休閒中性服飾。</li>
+            <li><b>Square Line 👜</b>：金針菇大力推薦的平價包包店，高 CP 純素皮革包，適合瘋狂包色收工！</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- transit · 漢南洞→解放村山腳 -->
+    <div class="item">
+      <div class="tcol"></div>
+      <div class="ncol"><div class="node mini"><svg><use href="#ic-walk"/></svg></div></div>
+      <div class="content">
+        <div class="transit open">
+          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚇 漢南洞 ➡️ 解放村山腳（好漢坡）<span class="caret">›</span></div>
+          <div class="routes">
+            <div class="route sel">
+              <div class="route-top"><div class="route-time">1 站 + 步行上坡 <small>17:30–18:00</small></div><div class="check"></div></div>
+              <div class="segs"><span class="seg walk">🚶 走回漢江鎮站</span><span class="seg l6">🚈 6號線 2站→綠莎坪</span><span class="seg walk">🚶 2號出口 → 解放村好漢坡 15–20 分陡坡</span></div>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">出站順大路轉進解放村街（해방촌길），朝新興市場方向上山，剛好當大餐後微運動。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 3 · 解放村日落 -->
+    <div class="item">
+      <div class="tcol"><div class="tm">18:00</div><div class="lb">STAGE 3</div></div>
+      <div class="ncol"><div class="node sun"><svg><use href="#ic-sun"/></svg></div></div>
+      <div class="content">
+        <div class="stop-c" data-map="해방촌" data-label="解放村">
+          <div class="goarrow">➤</div>
+          <div class="stop-title">解放村 · 餐盤選物 & 19:00 絕美日落</div>
+          <div class="stop-sub">18:00–20:30 · 餐盤選品 → 夕陽網美照 → 頂樓百萬夜景</div>
+          <div class="stop-tag">🌇 日落 · 🍽 餐盤 · 🌃 夜景露台</div>
+        </div>
+        <div class="infobox">
+          <div class="ih">🌇 解放村日落動線</div>
+          <ul>
+            <li><b>Sinon Shop 시논샵</b>：趁打烊前把法式復古瓷盤、選品彩色玻璃杯買齊，請店員用氣泡紙包緊收進大包包。</li>
+            <li><b>Bless Brunch Bar</b>：<b>19:00 前後</b> 夕陽最高潮！搶歐風戶外座位，點杯氣泡飲，在金黃晚霞街道旁拍人生網美照。</li>
+            <li><b>The Royal Food and Drink</b>：賞完夕陽移到頂樓露台，吃輕食俯瞰解放村平房＋對岸江南、首爾塔萬家燈火百萬夜景。</li>
+          </ul>
+          <div class="note">💡 備案：Formula Coffee。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- transit · 解放村→新沙飯店 -->
+    <div class="item">
+      <div class="tcol"></div>
+      <div class="ncol"><div class="node mini"><svg><use href="#ic-train"/></svg></div></div>
+      <div class="content">
+        <div class="transit open">
+          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚇 解放村 ➡️ 新沙飯店（全地鐵）<span class="caret">›</span></div>
+          <div class="routes">
+            <div class="route sel">
+              <div class="route-top"><div class="route-time">6號→3號線 <small>約 1,450 KRW</small></div><div class="check"></div></div>
+              <div class="segs"><span class="seg walk">🚶 下坡走回綠莎坪站</span><span class="seg l6">🚈 6號線 3站→藥水</span><span class="seg l3">🚈 轉 3號線 3站→新沙</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 4 · 回飯店 -->
+    <div class="item">
+      <div class="tcol"><div class="tm">21:00</div><div class="lb">STAGE 4</div></div>
+      <div class="ncol"><div class="node home"><svg><use href="#ic-bed"/></svg></div></div>
+      <div class="content">
+        <div class="stop-c" data-map="haro stay sinsa 논현동 21-2 강남구" data-label="haro stay sinsa">
+          <div class="goarrow">➤</div>
+          <div class="stop-title">回到 haro stay sinsa</div>
+          <div class="stop-sub">出站走回飯店休息、敷面膜，為第 3 天充飽電！</div>
+          <div class="stop-tag">🗺 江南區論峴洞 21-2</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta" id="cta2">🗺 開啟地圖檢視今日路線</div>
+  <div class="foot">第 2 天 · 明洞 → 漢南洞 → 解放村 · 共 5 個停靠點</div>
+
+  </div><!-- /page-day2 -->
 
   <!-- ============ 第 3 天行程頁 ============ -->
   <div id="page-day3" class="page">
@@ -919,6 +1092,10 @@
 
   document.getElementById('cta').addEventListener('click',function(){
     var url='https://www.google.com/maps/dir/김포국제공항/논현동+21-2+강남구/신당역/두타몰+동대문/뉴뉴+동대문/논현동+21-2+강남구';
+    toast('🗺 開啟今日完整路線');window.open(url,'_blank');
+  });
+  document.getElementById('cta2').addEventListener('click',function(){
+    var url='https://www.google.com/maps/dir/롯데백화점+명동+본점/한남동/해방촌/논현동+21-2+강남구';
     toast('🗺 開啟今日完整路線');window.open(url,'_blank');
   });
   document.getElementById('cta3').addEventListener('click',function(){
