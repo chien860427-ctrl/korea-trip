@@ -67,6 +67,7 @@
   .node.air{background:var(--green);box-shadow:0 3px 8px rgba(74,138,61,.4);}
   .node.home{background:var(--green);box-shadow:0 3px 8px rgba(74,138,61,.4);}
   .node.sun{background:#e08b2f;box-shadow:0 3px 8px rgba(224,139,47,.4);}
+  .node.med{background:#c94f8a;box-shadow:0 3px 8px rgba(201,79,138,.4);}
   .node.mini{width:28px;height:28px;background:#b3a48f;box-shadow:0 2px 6px rgba(150,135,115,.4);margin-top:5px;flex:0 0 28px;}
   .node svg{width:21px;height:21px;fill:#fff;display:block;}
   .node.mini svg{width:15px;height:15px;}
@@ -94,6 +95,7 @@
   .infobox li:last-child{margin-bottom:0;}
   .infobox li b{color:var(--ink);}
   .infobox li b.hot{color:var(--blue);}
+  .infobox .note{font-size:11px;color:var(--gray);margin-top:8px;line-height:1.55;}
   .transit{padding-top:4px;}
   .transit-head{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:#6d6154;font-weight:700;cursor:pointer;user-select:none;background:#f1e8d8;border:1px solid var(--line);padding:5px 11px;border-radius:20px;}
   .transit-head .caret{transition:transform .25s;font-size:11px;color:var(--gray);}
@@ -111,7 +113,7 @@
   .segs{display:flex;align-items:center;gap:5px;margin-top:8px;flex-wrap:wrap;}
   .seg{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#fff;padding:3px 8px;border-radius:6px;white-space:nowrap;}
   .seg.walk{background:#ece3d3;color:#6d6355;}
-  .l9{background:#c1a45a;} .l3{background:#e08b2f;} .l6{background:#a86b2c;} .l2{background:#3a9b4f;} .l7{background:#4a7a3a;} .taxi{background:#f2b705;}
+  .seg.l9{background:#c1a45a;} .seg.l3{background:#e08b2f;} .seg.l6{background:#a86b2c;} .seg.l2{background:#3a9b4f;} .seg.l7{background:#4a7a3a;} .seg.lsb{background:#d0313b;} .seg.taxi{background:#f2b705;}
   .choices{margin-top:10px;display:flex;flex-direction:column;gap:9px;}
   .choice{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 3px 10px rgba(90,60,30,.06);}
   .choice-h{padding:10px 12px;display:flex;align-items:center;gap:7px;font-weight:800;font-size:13px;cursor:pointer;}
@@ -127,6 +129,12 @@
   .page{display:none;}
   .page.active{display:block;}
 
+  /* 空白頁 */
+  .empty{padding:70px 30px;text-align:center;color:var(--gray);}
+  .empty .ei{font-size:40px;margin-bottom:12px;}
+  .empty .et{font-size:15px;font-weight:800;color:#8a7d6c;}
+  .empty .ed{font-size:12.5px;margin-top:8px;line-height:1.6;}
+
   /* 機票頁 */
   .tkt-hd{padding:16px 18px 4px;font-size:20px;font-weight:900;letter-spacing:.5px;}
   .tkt-hd span{font-size:13px;font-weight:600;color:var(--gray);margin-left:8px;}
@@ -141,7 +149,7 @@
   .tkt-title .sub{font-size:12px;color:var(--gray);margin-top:3px;font-weight:600;}
   .legs{padding:10px 16px 2px;display:flex;flex-direction:column;gap:10px;}
   .leg{display:flex;align-items:center;gap:14px;}
-  .tbox{background:var(--red);color:#fff;border-radius:8px;padding:6px 8px;text-align:center;flex:0 0 78px;box-shadow:0 3px 8px rgba(74,138,61,.3);}
+  .tbox{background:var(--green);color:#fff;border-radius:8px;padding:6px 8px;text-align:center;flex:0 0 78px;box-shadow:0 3px 8px rgba(74,138,61,.3);}
   .tbox .t{font-size:22px;font-weight:900;letter-spacing:2px;}
   .tbox .z{font-size:9px;font-weight:700;opacity:.9;margin-top:1px;letter-spacing:.5px;}
   .leg .info .l1{font-size:17px;font-weight:800;}
@@ -165,8 +173,8 @@
   .ov-card:active{transform:scale(.99);}
   .ov-badge{flex:0 0 58px;width:58px;height:58px;border-radius:14px;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(90,60,30,.2);}
   .ov-badge.d1{background:linear-gradient(135deg,#cf3a2e,#a82c22);}
-  .ov-badge.d2{background:linear-gradient(135deg,#4a8a3d,#3a6f30);}
-  .ov-badge.d3{background:linear-gradient(135deg,#d99a3c,#c07f28);}
+  .ov-badge.d2{background:linear-gradient(135deg,#b3a48f,#9a8b76);}
+  .ov-badge.d3{background:linear-gradient(135deg,#c94f8a,#a83b70);}
   .ov-badge.d4{background:linear-gradient(135deg,#8a6d4a,#6f5636);}
   .ov-badge .d{font-size:17px;font-weight:900;line-height:1;}
   .ov-badge .dt{font-size:10px;font-weight:700;margin-top:4px;opacity:.95;}
@@ -201,6 +209,7 @@
   <symbol id="ic-taxi" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5H15V3H9v2H6.5c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></symbol>
   <symbol id="ic-bed" viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></symbol>
   <symbol id="ic-sun" viewBox="0 0 24 24"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/></symbol>
+  <symbol id="ic-med" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2zm2 8h-3v3h-2v-3H8v-2h3V9h2v3h3v2z"/></symbol>
 </svg>
 
 <div class="phone">
@@ -217,7 +226,7 @@
       <div class="tab" data-page="overview">總覽</div>
       <div class="tab" data-page="day1">第 1 天</div>
       <div class="tab" data-page="day2">第 2 天</div>
-      <div class="tab">第 3 天</div>
+      <div class="tab" data-page="day3">第 3 天</div>
       <div class="tab">第 4 天</div>
     </div>
   </div>
@@ -327,9 +336,9 @@
       <div class="ov-card" data-day="day2">
         <div class="ov-badge d2"><div class="d">D2</div><div class="dt">08/28 五</div></div>
         <div class="ov-body">
-          <div class="ov-area"><span class="pin">📍</span>聖水洞 · 纛島漢江公園</div>
-          <div class="ov-desc">聖水洞演武場街爆買（Matin Kim、BADBLOOD…）→ 纛島漢江公園日落野餐、漢江泡麵＋外送炸雞。</div>
-          <div class="ov-tags"><span class="ov-tag">城東區</span><span class="ov-tag">聖水洞</span><span class="ov-tag">纛島漢江公園</span></div>
+          <div class="ov-area"><span class="pin">📍</span>行程調整中</div>
+          <div class="ov-desc">第 2 天行程重新規劃中，稍後補上內容。</div>
+          <div class="ov-tags"><span class="ov-tag hint">待調整</span></div>
         </div>
         <div class="ov-chev">›</div>
       </div>
@@ -337,9 +346,9 @@
       <div class="ov-card" data-day="day3">
         <div class="ov-badge d3"><div class="d">D3</div><div class="dt">08/29 六</div></div>
         <div class="ov-body">
-          <div class="ov-area"><span class="pin">📍</span>景福宮 · 北村 · 仁寺洞</div>
-          <div class="ov-desc">古宮文化圈：景福宮換裝、北村韓屋村、三清洞與仁寺洞傳統工藝與茶館。</div>
-          <div class="ov-tags"><span class="ov-tag">鐘路區</span><span class="ov-tag">景福宮·北村</span><span class="ov-tag hint">建議 · 可調整</span></div>
+          <div class="ov-area"><span class="pin">📍</span>江南醫美 · 聖水洞 · 纛島漢江</div>
+          <div class="ov-desc">上午江南醫美體驗 → 聖水洞午餐＋演武場街由東向西爆買 → 纛島漢江公園日落野餐。</div>
+          <div class="ov-tags"><span class="ov-tag">江南醫美</span><span class="ov-tag">聖水洞</span><span class="ov-tag">纛島漢江公園</span></div>
         </div>
         <div class="ov-chev">›</div>
       </div>
@@ -619,211 +628,230 @@
 
   </div><!-- /page-day1 -->
 
-  <!-- ============ 第 2 天行程頁 ============ -->
+  <!-- ============ 第 2 天（待調整） ============ -->
   <div id="page-day2" class="page">
+    <div class="subbar">
+      <div class="date">08/28 <span>星期五 · 待安排</span></div>
+    </div>
+    <div class="empty">
+      <div class="ei">📝</div>
+      <div class="et">第 2 天行程調整中</div>
+      <div class="ed">這一天的內容正在重新規劃，<br>之後補上就會顯示在這裡。</div>
+    </div>
+  </div>
+
+  <!-- ============ 第 3 天行程頁 ============ -->
+  <div id="page-day3" class="page">
 
   <div class="subbar">
-    <div class="date">08/28 <span>星期五 · 聖水洞 & 漢江</span></div>
+    <div class="date">08/29 <span>星期六 · 醫美 & 聖水 & 漢江</span></div>
     <div class="mode-row">
       <div class="mode">🚇 大眾運輸 ▾</div>
       <div class="sortbtn">⚡ 一鍵排序</div>
     </div>
   </div>
 
-  <div class="sec-label">今日路線 · 新沙 ▸ 聖水洞 ▸ 纛島漢江公園</div>
+  <div class="sec-label">今日路線 · 江南醫美 ▸ 聖水洞 ▸ 纛島漢江公園</div>
 
   <div class="tl">
 
-    <!-- 1 · 飯店出發 -->
+    <!-- 0 · 江南醫美 -->
     <div class="item">
-      <div class="tcol"><div class="tm">10:00</div><div class="lb">出發</div></div>
-      <div class="ncol"><div class="node"><svg><use href="#ic-hotel"/></svg></div></div>
+      <div class="tcol"><div class="tm">09:30</div><div class="lb">STAGE 0</div></div>
+      <div class="ncol"><div class="node med"><svg><use href="#ic-med"/></svg></div></div>
       <div class="content">
-        <div class="stop-c" data-map="haro stay sinsa 논현동 21-2 강남구" data-label="haro stay sinsa">
+        <div class="stop-c" data-map="강남 피부과 성형외과" data-label="江南醫美診所">
           <div class="goarrow">➤</div>
-          <div class="stop-title">haro stay sinsa 出發</div>
-          <div class="stop-sub">睡飽出發 · 散步 3–5 分回到新沙站，前往聖水洞</div>
-          <div class="stop-tag">🎒 輕裝出門 · 準備爆買！</div>
+          <div class="stop-title">江南醫美體驗</div>
+          <div class="stop-sub">09:30–12:00 · 建議預約第一批諮詢避開午峰</div>
+          <div class="stop-tag">💉 皮膚管理 / 保濕 / 簡易雷射</div>
+        </div>
+        <div class="infobox">
+          <div class="seg-h">🚕 交通方案</div>
+          <ul>
+            <li><b>新沙／論峴一帶診所</b>：從飯店直接散步 5–10 分即可抵達。</li>
+            <li><b>江南站一帶診所</b>：新沙站搭 新盆唐線 或 3 號線，只需 2–3 站、約 8 分鐘。</li>
+          </ul>
+          <div class="seg-h">⏱ 時程建議</div>
+          <ul>
+            <li>建議預約 <b>09:30 或 10:00</b> 第一批諮詢，避開中午尖峰人潮。</li>
+            <li>基本皮膚管理（工廠制清潔、保濕、簡易雷射），3 人約抓 <b>1.5–2 小時</b>。</li>
+            <li><b>醫美後防護</b>：做完臉先在診所擦好防曬，戴上帽子與墨鏡，準備前往聖水洞！</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <!-- transit · 新沙→聖水 -->
+    <!-- transit · 江南/新沙→聖水 -->
     <div class="item">
       <div class="tcol"></div>
       <div class="ncol"><div class="node mini"><svg><use href="#ic-train"/></svg></div></div>
       <div class="content">
         <div class="transit open">
-          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚇 00 時 27 分 · 新沙 ➡️ 聖水（防呆版）<span class="caret">›</span></div>
+          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚇 00 時 22 分 · 江南／新沙 ➡️ 聖水（最速地鐵）<span class="caret">›</span></div>
           <div class="routes">
             <div class="route sel">
-              <div class="route-top"><div class="route-time">25–30 分鐘 <small>約 1,450 KRW</small></div><div class="check"></div></div>
+              <div class="route-top"><div class="route-time">20–25 分鐘 <small>約 1,450 KRW</small></div><div class="check"></div></div>
               <div class="segs"><span class="seg l3">🚈 3號線 4 站→乙支路三街</span><span class="seg walk">🚶 站內轉乘</span><span class="seg l2">🚈 2號線 5 站→聖水</span></div>
             </div>
           </div>
-          <div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">※ 若第一站想吃近纛島的美食，可在「纛島站」下車。</div>
         </div>
       </div>
     </div>
 
-    <!-- 2 · 聖水站午餐 -->
+    <!-- STAGE 1 · 聖水站午餐 -->
     <div class="item">
-      <div class="tcol"><div class="tm">10:30</div><div class="lb">午餐</div></div>
+      <div class="tcol"><div class="tm">12:30</div><div class="lb">STAGE 1</div></div>
       <div class="ncol"><div class="node"><svg><use href="#ic-food"/></svg></div></div>
       <div class="content">
         <div class="stop-c" data-map="성수역" data-label="聖水站">
           <div class="goarrow">➤</div>
-          <div class="stop-title">聖水站 · 午餐（多選一）</div>
-          <div class="stop-sub">10:30–12:15 · 依飢餓度與排隊狀況自由挑選</div>
-          <div class="stop-tag">🍲 刀削麵 / 湯飯 / 豬蹄</div>
+          <div class="stop-title">聖水站 · 出站即開吃</div>
+          <div class="stop-sub">12:30–14:00 · 依想吃哪家走對應出口 · 順手打包下午茶</div>
+          <div class="stop-tag">🍲 出站即食 · 🥐 外帶帶去漢江</div>
         </div>
         <div class="infobox">
-          <div class="seg-h">🥢 午餐備案</div>
+          <div class="seg-h">🥢 出站即開吃（依店家走對應出口）</div>
           <ul>
-            <li><b>朝朝刀削麵 조조칼국수</b>（2 號出口步行 2 分）鮮美蛤蜊刀削麵＋酥脆海鮮煎餅，一出站迅速開吃。</li>
-            <li><b>어묵나라 魚餅黑店</b>（站內／出口通道，免出站）熱騰騰炒年糕與魚餅湯，墊胃剛好。</li>
-            <li><b>能洞水芹菜 능동미나리</b>（3、4 號出口南側）清甜嫩口韓牛水芹菜湯飯。</li>
-            <li><b>聖水豬蹄 성수족발</b>（4 號出口步行 5 分）首爾三大豬蹄名店之一，Q 彈帶甜。</li>
-            <li><b>安木 안목／末方湯飯</b>（近纛島站）米其林推薦釜山風味豬肉湯飯與傳統湯飯。</li>
+            <li><b>秒開吃首選</b>：不出站直接在通道吃 <b>魚餅黑店 어묵나라</b>；或 <b>2 號出口</b> 步行 2 分爽吃 <b>朝朝刀削麵 조조칼국수</b>。</li>
+            <li><b>招牌湯飯／豬蹄</b>：<b>3、4 號出口</b> → 排隊名店 <b>能洞水芹菜 능동미나리</b>（水芹菜很消腫，非常適合醫美後吃！），或步行 5 分吃 <b>聖水豬蹄 성수족발</b>。</li>
           </ul>
-          <div class="seg-h">🥐 順路外帶下午茶</div>
+          <div class="seg-h">🥐 順手打包帶走（帶去漢江或路上吃）</div>
           <ul>
-            <li><b>standard bread</b>：極致濃郁柔軟的現烤法式吐司與手撕吐司。</li>
-            <li><b>달임막 dalimbread</b>：超吸睛可愛小熊麵包配土耳其奶油 Kaymak。</li>
-            <li><b>meita wang 매타왕</b>：主打 XXXL 號極巨型蛋撻。</li>
+            <li>沿 3、4 號出口南側巷弄外帶：<b>meita wang 매타왕</b> XXXL 極巨型蛋撻。</li>
+            <li><b>달임막 dalimbread</b> 超可愛小熊麵包。</li>
+            <li><b>standard bread</b> 剛出爐的現烤柔軟法式吐司。</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <!-- transit · 演武場街步行動線 -->
+    <!-- transit · 演武場街由東向西 -->
     <div class="item">
       <div class="tcol"></div>
       <div class="ncol"><div class="node mini"><svg><use href="#ic-walk"/></svg></div></div>
       <div class="content">
         <div class="transit open">
-          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚶 血拼動線 · 沿「演武場街 연무장길」<span class="caret">›</span></div>
+          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚶 血拼動線 · 由東向西（聖水站 → 纛島站）<span class="caret">›</span></div>
           <div class="routes">
             <div class="route sel">
-              <div class="route-top"><div class="route-time">由西向東 <small>纛島站 → 聖水站，不走回頭路</small></div><div class="check"></div></div>
-              <div class="segs"><span class="seg walk">🚶 西側 街頭選品</span><span class="seg walk">中段 核心戰區</span><span class="seg walk">東側 鞋款飾品</span></div>
+              <div class="route-top"><div class="route-time">手提點心順向逛 <small>不走回頭路</small></div><div class="check"></div></div>
+              <div class="segs"><span class="seg walk">🚶 A 聖水站東側</span><span class="seg walk">B 中段核心</span><span class="seg walk">C 纛島站西側</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 3 · 聖水洞爆買 -->
+    <!-- STAGE 2 · 聖水洞爆買 -->
     <div class="item">
-      <div class="tcol"><div class="tm">12:15</div><div class="lb">血拼</div></div>
+      <div class="tcol"><div class="tm">14:00</div><div class="lb">STAGE 2</div></div>
       <div class="ncol"><div class="node"><svg><use href="#ic-bag"/></svg></div></div>
       <div class="content">
         <div class="stop-c" data-map="성수동 연무장길" data-label="聖水洞 演武場街">
           <div class="goarrow">➤</div>
-          <div class="stop-title">聖水洞 · 潮流品牌爆買</div>
-          <div class="stop-sub">12:15–17:30 · 演武場街由西向東一路順逛</div>
-          <div class="stop-tag">🛍️ 20 家精選 · 含新加入 BADBLOOD</div>
+          <div class="stop-title">聖水洞 · 順向爆買街</div>
+          <div class="stop-sub">14:00–18:00 · 由東向西 聖水站 → 纛島站，一路順逛</div>
+          <div class="stop-tag">🛍️ 20 家精選品牌一路順逛</div>
         </div>
         <div class="infobox">
-          <div class="seg-h">🟩 區段一 · 美式街頭／設計選品（纛島站西側）</div>
+          <div class="seg-h">📍 區段 A · 聖水站東側（鞋包·平價·飾品海）</div>
           <ul>
-            <li><b class="hot">1. BADBLOOD 聖水旗艦店 배드블러드 🔥新加入</b>：韓國極致辣妹風指標，工裝褲、辣妹貼身運動服、個性內著，店面超大好激發辣妹魂！</li>
-            <li><b>2. Hausnowhere</b>：Gentle Monster 旗下整棟前衛概念空間（含香氛 TAMBURINS）。</li>
-            <li><b>3. Subdued</b>：美式街頭辣妹風個性服飾。</li>
-            <li><b>4. Double Lovers</b>：復古街頭風設計師眼鏡、墨鏡。</li>
-            <li><b>5. Fogsy</b>：高質感韓國在地流行女裝。</li>
-            <li><b>6. 29cm SEONGSU</b>：質感家居選品、生活雜貨與潮流快閃。</li>
+            <li><b>nyu·nyu 聖水店</b>：一開始就先衝飾品海，耳環、包包帽子買起來。</li>
+            <li><b>SWEE</b>：潮流美妝與化妝品選品，就在飾品店附近。</li>
+            <li><b>Khiho / Chaakan Shoes 착한구두</b>：先看高質感手工鞋，再掃台幣幾百元超平價女鞋。</li>
+            <li><b>Musinsa Standard / Musinsa Kicks</b>：韓國極簡版 UNIQLO 基本款 + 當季限量潮流球鞋。</li>
+            <li><b>maman Gelato</b>：逛完腿酸就停下吃杯迪拜巧克力冰淇淋補血糖！</li>
           </ul>
-          <div class="seg-h">🟩 區段二 · 核心一級戰區（中段演武場街）</div>
+          <div class="seg-h">📍 區段 B · 演武場街核心中段（潮流大牌）</div>
           <ul>
-            <li><b>7. Rest & Recreation（R&R）</b>：韓星私服最愛，運動帶點小性感 Logo 棉質女裝與帽子。</li>
-            <li><b>8. Matin Kim</b>：必排大牌！Logo 鐵牌皮夾、包包與帥氣街頭服飾。</li>
-            <li><b>9. Rockfish Weatherwear</b>：芭蕾舞鞋、瑪莉珍鞋、撞色雨鞋與雲朵包。</li>
-            <li><b>10. Stand Oil</b>：平價高質感純素皮革包，現代復古款。</li>
-            <li><b>11. The Coldest Moment（TCM）</b>：美式辣妹與中性塗鴉街頭。</li>
-            <li><b>12. Pureda</b>：熱門網拍實體店，通勤知性風，版型極佳。</li>
-            <li><b>13. Loe 로에</b>：小眾香氛，大自然與蜜桃乾淨香氣，適合伴手禮。</li>
+            <li><b>Loe 로에</b>：質感韓系小眾香氛，買護手霜當伴手禮。</li>
+            <li><b>Pureda</b>：知性歐膩風熱門網拍實體店。</li>
+            <li><b>The Coldest Moment（TCM）</b>：美式潮流與塗鴉街頭服飾。</li>
+            <li><b>Stand Oil</b>：純素皮革平價高質感包，韓國女生人手一咖。</li>
+            <li><b>Rockfish Weatherwear</b>：必試法式芭蕾舞鞋、瑪莉珍鞋與雲朵包。</li>
+            <li><b>Matin Kim</b>：聖水最火大牌，必買 Logo 鐵牌皮夾與帥氣街頭服飾。</li>
+            <li><b>Rest & Recreation（R&R）</b>：韓星私服最愛，Logo 棉質運動風女裝與帽子。</li>
           </ul>
-          <div class="seg-h">🟩 區段三 · 平價鞋款與飾品海（聖水站東側）</div>
+          <div class="seg-h">📍 區段 C · 纛島站西側（街頭選品·極致辣妹）</div>
           <ul>
-            <li><b>14. maman Gelato</b>：中停補血糖，必點迪拜巧克力與開心果冰淇淋。</li>
-            <li><b>15. Musinsa Standard 聖水</b>：升級版 UNIQLO，西裝褲與俐落基礎款物美價廉。</li>
-            <li><b>16. Musinsa Kicks</b>：專攻熱門限量聯名潮流球鞋。</li>
-            <li><b>17. Chaakan Shoes 착한구두</b>：超平價連鎖女鞋，款式多、CP 值爆表。</li>
-            <li><b>18. Khiho</b>：都會時髦、極簡線條的高質感手工設計師女鞋。</li>
-            <li><b>19. nyu·nyu 聖水店</b>：東大門飾品巨頭分店，耳環項鍊帽包海零售直接買。</li>
-            <li><b>20. SWEE</b>：快速崛起的潮流美妝與化妝品複合選品。</li>
+            <li><b>29cm SEONGSU</b>：高質感生活家居選品與潮流快閃。</li>
+            <li><b>Fogsy / Double Lovers</b>：高質感流行女裝與復古設計師墨鏡眼鏡。</li>
+            <li><b>Subdued</b>：個性美式街頭辣妹裝。</li>
+            <li><b>Hausnowhere</b>：Gentle Monster 旗下整棟超前衛概念空間（含 TAMBURINS 香氛）。</li>
+            <li><b class="hot">BADBLOOD 聖水旗艦店 배드블러드 🔥辣妹壓軸</b>：最著名美式辣妹工裝褲、修身運動服，在這裡買完剛好當逛街的完美句點！</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <!-- transit · 聖水→纛島漢江 -->
+    <!-- transit · 纛島站→漢江公園 -->
     <div class="item">
       <div class="tcol"></div>
       <div class="ncol"><div class="node mini"><svg><use href="#ic-train"/></svg></div></div>
       <div class="content">
         <div class="transit open">
-          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚇 00 時 08 分 · 聖水 ➡️ 纛島漢江公園 <span class="caret">›</span></div>
+          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚇 00 時 08 分 · 纛島 ➡️ 漢江公園（直達防呆）<span class="caret">›</span></div>
           <div class="routes">
             <div class="route sel">
               <div class="route-top"><div class="route-time">1–2 站 <small>約 1,450 KRW</small></div><div class="check"></div></div>
-              <div class="segs"><span class="seg walk">🚶 走回聖水／建大入口站</span><span class="seg l7">🚈 7號線 往清潭</span><span class="seg walk">纛島遊園地站 2·3 出口即達</span></div>
+              <div class="segs"><span class="seg walk">🚶 逛到纛島站</span><span class="seg l7">🚈 7號線 往清潭</span><span class="seg walk">纛島遊園地站 2·3 出口即達</span></div>
             </div>
           </div>
-          <div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">✨ 出站一轉身就是漢江公園超大草皮與開闊江景，完全不用走遠！</div>
+          <div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">✨ 出站一轉身就是漢江公園超大草皮與美麗江景，完全不用走遠！</div>
         </div>
       </div>
     </div>
 
-    <!-- 4 · 纛島漢江公園 -->
+    <!-- STAGE 3 · 纛島漢江公園 -->
     <div class="item">
-      <div class="tcol"><div class="tm">17:30</div><div class="lb">野餐</div></div>
+      <div class="tcol"><div class="tm">18:00</div><div class="lb">STAGE 3</div></div>
       <div class="ncol"><div class="node sun"><svg><use href="#ic-sun"/></svg></div></div>
       <div class="content">
         <div class="stop-c" data-map="뚝섬한강공원" data-label="纛島漢江公園">
           <div class="goarrow">➤</div>
           <div class="stop-title">纛島漢江公園 · 日落野餐</div>
-          <div class="stop-sub">17:30–21:30 · 纛島遊園地站 2/3 出口，出站即達草皮江景</div>
+          <div class="stop-sub">18:00–21:30 · 纛島遊園地站 2/3 出口，出站即達草皮江景</div>
           <div class="stop-tag">🌅 日落 · 🍗 炸雞 · 🍜 漢江泡麵</div>
         </div>
         <div class="infobox">
-          <div class="ih">🧺 漢江三大深夜體驗</div>
+          <div class="ih">🧺 漢江深夜野生體驗</div>
           <ul>
-            <li><b>🍗 傳單大叔炸雞</b>：出站有大叔發外送 DM（橋村／BHC／bb.q），挑一張請超商或外送區訂購，體驗江邊炸雞配啤酒可樂。</li>
-            <li><b>🍜 自助煮泡麵</b>：超商買辛拉麵／炒碼麵＋專用錫箔紙碗，拿到店外自動煮麵機自助煮出完美熟度。</li>
-            <li><b>🌆 日落與夜景</b>：18:30–19:00 邊吃邊看粉橘色日落；入夜對岸江南大樓與橋樑燈光亮起，吹晚風超愜意。</li>
+            <li><b>🍗 外送炸雞</b>：拿路邊傳單大叔的 DM，或在便利商店外送區訂橋村炸雞。</li>
+            <li><b>🍜 漢江自助泡麵</b>：超商買泡麵＋專用錫箔碗，用外面自動煮麵機煮出完美泡麵。</li>
+            <li><b>🥐 吃下午茶看夜景</b>：拿出聖水外帶的 standard bread 法吐、小熊麵包與 XXL 巨型蛋撻，吹漢江晚風看日落與江南對岸璀璨夜景，完美！</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <!-- transit · 回飯店 -->
+    <!-- transit · 回飯店（7號線→論峴轉新盆唐線→新沙） -->
     <div class="item">
       <div class="tcol"></div>
-      <div class="ncol"><div class="node mini"><svg><use href="#ic-taxi"/></svg></div></div>
+      <div class="ncol"><div class="node mini"><svg><use href="#ic-train"/></svg></div></div>
       <div class="content">
         <div class="transit open">
-          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚕 00 時 15 分 · 纛島 ➡️ 新沙飯店 <span class="caret">›</span></div>
+          <div class="transit-head" onclick="this.parentElement.classList.toggle('open')">🚇 00 時 20 分 · 纛島漢江公園 ➡️ 新沙飯店 <span class="caret">›</span></div>
           <div class="routes">
             <div class="route sel">
-              <div class="route-top"><div class="route-time">地鐵 或 計程車</div><div class="check"></div></div>
-              <div class="segs"><span class="seg l7">🚈 7號線→論峴／鶴洞站散步</span><span class="seg taxi">🚕 或叫車 約 15 分</span></div>
+              <div class="route-top"><div class="route-time">地鐵直達 <small>約 1,450 KRW</small></div><div class="check"></div></div>
+              <div class="segs"><span class="seg l7">🚈 7號線 3 站→論峴</span><span class="seg walk">🚶 站內轉乘</span><span class="seg lsb">🚈 新盆唐線 1 站→新沙</span></div>
             </div>
           </div>
+          <div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">💡 在論峴站跟著紅色「新盆唐線」指標走即可；到新沙站走最靠近飯店的出口。</div>
         </div>
       </div>
     </div>
 
-    <!-- 5 · 回飯店 -->
+    <!-- STAGE 4 · 回飯店 -->
     <div class="item">
-      <div class="tcol"><div class="tm">21:30</div><div class="lb">回飯店</div></div>
+      <div class="tcol"><div class="tm">21:30</div><div class="lb">STAGE 4</div></div>
       <div class="ncol"><div class="node home"><svg><use href="#ic-bed"/></svg></div></div>
       <div class="content">
         <div class="stop-c" data-map="haro stay sinsa 논현동 21-2 강남구" data-label="haro stay sinsa">
           <div class="goarrow">➤</div>
           <div class="stop-title">回到 haro stay sinsa</div>
-          <div class="stop-sub">滿載而歸 · 洗漱休息，為第 3 天充飽電！</div>
+          <div class="stop-sub">滿載而歸 · 回飯店休息、敷面膜，為第 4 天充飽電！</div>
           <div class="stop-tag">🗺 江南區論峴洞 21-2</div>
         </div>
       </div>
@@ -831,10 +859,10 @@
 
   </div>
 
-  <div class="cta" id="cta2">🗺 開啟地圖檢視今日路線</div>
-  <div class="foot">第 2 天 · 新沙 → 聖水洞 → 纛島漢江公園 · 共 5 個停靠點</div>
+  <div class="cta" id="cta3">🗺 開啟地圖檢視今日路線</div>
+  <div class="foot">第 3 天 · 江南醫美 → 聖水洞 → 纛島漢江公園 · 共 5 個停靠點</div>
 
-  </div><!-- /page-day2 -->
+  </div><!-- /page-day3 -->
 
 </div>
 
@@ -893,8 +921,8 @@
     var url='https://www.google.com/maps/dir/김포국제공항/논현동+21-2+강남구/신당역/두타몰+동대문/뉴뉴+동대문/논현동+21-2+강남구';
     toast('🗺 開啟今日完整路線');window.open(url,'_blank');
   });
-  document.getElementById('cta2').addEventListener('click',function(){
-    var url='https://www.google.com/maps/dir/논현동+21-2+강남구/성수동+연무장길/뚝섬한강공원/논현동+21-2+강남구';
+  document.getElementById('cta3').addEventListener('click',function(){
+    var url='https://www.google.com/maps/dir/논현동+21-2+강남구/성수역/성수동+연무장길/뚝섬한강공원/논현동+21-2+강남구';
     toast('🗺 開啟今日完整路線');window.open(url,'_blank');
   });
   document.querySelectorAll('.sortbtn').forEach(function(b){b.addEventListener('click',function(){toast('⚡ 已依時間重新排序');});});
