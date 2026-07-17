@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>韓國自由行 · 首爾 4天</title>
+<title>韓國錢包破掉之旅</title>
 <style>
   :root{--blue:#6FB7EC;--blue-dark:#3E86C0;--blue-soft:#e6f3ff;--green:#46a487;--red:#46a487;--ink:#2f3d38;--gray:#94a09a;--line:#e7eee7;--card:#fff;--bg:#fffcf0;}
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -14,8 +14,8 @@
   .ci{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:#8a97a5;vertical-align:middle;flex:0 0 auto;width:18px;height:18px;}
   .ci svg{fill:#fff;display:block;width:11px;height:11px;}
   .ci.hi{width:19px;height:19px;background:var(--blue-dark);margin-right:6px;} .ci.hi svg{width:11px;height:11px;}
-  .ci.tgi{width:16px;height:16px;background:#b3a48f;margin-right:5px;} .ci.tgi svg{width:10px;height:10px;}
-  .ci.ni{width:15px;height:15px;background:#d99a3c;margin-right:5px;} .ci.ni svg{width:9px;height:9px;}
+  .ci.tgi{width:16px;height:16px;background:#9fb3ba;margin-right:5px;} .ci.tgi svg{width:10px;height:10px;}
+  .ci.ni{width:15px;height:15px;background:#86b1ae;margin-right:5px;} .ci.ni svg{width:9px;height:9px;}
   .top{background:linear-gradient(180deg,var(--blue),var(--blue-dark));color:#fff;padding:16px 18px 10px;}
   .top-row{display:flex;align-items:center;justify-content:space-between;gap:10px;}
   .top-row .back,.top-row .share{width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:18px;opacity:.9;}
@@ -29,11 +29,11 @@
   .date{font-size:22px;font-weight:800;letter-spacing:.5px;}
   .date span{font-size:14px;font-weight:500;color:var(--gray);margin-left:8px;}
   .mode-row{display:flex;align-items:center;justify-content:space-between;margin-top:12px;}
-  .mode{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:600;box-shadow:0 2px 6px rgba(90,60,30,.06);}
+  .mode{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:600;box-shadow:0 2px 6px rgba(90,120,130,.06);}
   .mode .ci{width:17px;height:17px;background:#8a97a5;} .mode .ci svg{width:10px;height:10px;}
-  .sortbtn{background:var(--blue);color:#fff;border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;box-shadow:0 3px 8px rgba(207,58,46,.35);cursor:pointer;display:inline-flex;align-items:center;gap:5px;}
+  .sortbtn{background:var(--blue);color:#fff;border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;box-shadow:0 3px 8px rgba(110,183,236,.35);cursor:pointer;display:inline-flex;align-items:center;gap:5px;}
   .sortbtn .ci{width:17px;height:17px;background:rgba(255,255,255,.28);} .sortbtn .ci svg{width:10px;height:10px;}
-  .flight{margin:14px 18px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 4px 12px rgba(90,60,30,.07);}
+  .flight{margin:14px 18px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 4px 12px rgba(90,120,130,.07);}
   .flight h4{font-size:13px;color:var(--blue-dark);font-weight:800;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
   .flight h4 .htxt{display:inline-flex;align-items:center;}
   .flight h4 .carrier{font-size:11.5px;color:var(--blue);font-weight:800;white-space:nowrap;}
@@ -44,11 +44,11 @@
   .fl-conn{flex:1;text-align:center;color:var(--blue);font-size:11px;font-weight:700;min-width:70px;}
   .fl-conn .ln{height:2px;background:var(--line);margin:6px 4px 4px;position:relative;border-radius:2px;}
   .fl-conn .ln::after{content:"";position:absolute;right:-1px;top:-3px;width:8px;height:8px;border-top:2px solid var(--blue);border-right:2px solid var(--blue);transform:rotate(45deg);}
-  .fl-meta{margin-top:12px;padding-top:9px;border-top:1px dashed var(--line);font-size:12px;color:#6d6154;display:flex;align-items:center;gap:7px;}
-  .fl-meta .ci{width:20px;height:20px;background:#c9a15a;} .fl-meta .ci svg{width:12px;height:12px;}
+  .fl-meta{margin-top:12px;padding-top:9px;border-top:1px dashed var(--line);font-size:12px;color:#63706b;display:flex;align-items:center;gap:7px;}
+  .fl-meta .ci{width:20px;height:20px;background:#8fb1ad;} .fl-meta .ci svg{width:12px;height:12px;}
   .fl-meta b{color:var(--ink);font-weight:800;}
   .sec-label{padding:16px 18px 2px;font-size:12px;font-weight:800;color:var(--gray);letter-spacing:1px;}
-  .rmap{margin:14px 18px 2px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 15px 6px;box-shadow:0 4px 12px rgba(90,60,30,.07);}
+  .rmap{margin:14px 18px 2px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 15px 6px;box-shadow:0 4px 12px rgba(90,120,130,.07);}
   .rmap .rmt{font-size:13px;font-weight:800;color:var(--blue-dark);margin-bottom:10px;display:flex;align-items:center;}
   .rmrow{display:flex;gap:11px;}
   .rmline{position:relative;width:22px;flex:0 0 22px;}
@@ -61,14 +61,14 @@
   .rmic{display:inline-flex;width:21px;height:21px;flex:0 0 21px;border-radius:50%;background:var(--c,#888);align-items:center;justify-content:center;margin-right:7px;box-shadow:0 1px 2px rgba(0,0,0,.18);}
   .rmic svg{width:12px;height:12px;fill:#fff;display:block;}
   .rmst .sb{font-size:10.5px;color:var(--gray);margin-top:1px;padding-left:28px;}
-  .rmseg{font-size:11.5px;color:#6d6154;padding-top:1px;}
+  .rmseg{font-size:11.5px;color:#63706b;padding-top:1px;}
   .rmseg .lg{display:inline-flex;align-items:center;font-size:10.5px;font-weight:800;color:#fff;padding:2px 7px;border-radius:5px;margin-right:5px;margin-bottom:3px;}
   .rmseg .lg .lgic{width:11px;height:11px;fill:#fff;margin-right:3px;}
   .fare{color:#2f6f2a;font-weight:800;background:#eef5e9;padding:1px 6px;border-radius:6px;}
-  .total{margin:12px 18px 4px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 4px 12px rgba(90,60,30,.1);}
+  .total{margin:12px 18px 4px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 4px 12px rgba(90,120,130,.1);}
   .total .th{background:var(--green);color:#fff;padding:10px 14px;font-weight:800;font-size:13.5px;display:flex;align-items:center;}
   .total .th .ci{background:rgba(255,255,255,.28);width:19px;height:19px;margin-right:6px;} .total .th .ci svg{width:11px;height:11px;}
-  .total .tb{padding:12px 14px;font-size:12.5px;color:#4a4038;line-height:1.85;}
+  .total .tb{padding:12px 14px;font-size:12.5px;color:#4b544f;line-height:1.85;}
   .total .tb b{color:var(--green);font-weight:800;}
   .total .tb .big{display:inline-block;margin-top:4px;background:#eef5e9;color:#2f6f2a;font-weight:800;padding:4px 10px;border-radius:8px;}
   .tl{padding:12px 16px 22px;}
@@ -80,35 +80,35 @@
   .ncol::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--line);transform:translateX(-50%);border-radius:3px;}
   .item:first-child .ncol::before{top:22px;}
   .item:last-child .ncol::before{bottom:auto;height:22px;}
-  .node{--pc:var(--blue);width:38px;height:38px;border-radius:50%;background:var(--pc);display:flex;align-items:center;justify-content:center;z-index:2;margin-top:2px;flex:0 0 38px;position:relative;filter:drop-shadow(0 3px 4px rgba(90,60,30,.3));}
+  .node{--pc:var(--blue);width:38px;height:38px;border-radius:50%;background:var(--pc);display:flex;align-items:center;justify-content:center;z-index:2;margin-top:2px;flex:0 0 38px;position:relative;filter:drop-shadow(0 3px 4px rgba(90,120,130,.3));}
   .node::after{content:"";position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--pc);}
-  .node.air{--pc:var(--green);} .node.home{--pc:var(--green);} .node.sun{--pc:#e08b2f;} .node.med{--pc:#c94f8a;}
-  .node.mini{--pc:#b3a48f;width:26px;height:26px;margin-top:6px;flex:0 0 26px;filter:none;box-shadow:0 2px 6px rgba(150,135,115,.4);}
+  .node.air{--pc:var(--green);} .node.home{--pc:var(--green);} .node.sun{--pc:#E6A874;} .node.med{--pc:#C98FB4;}
+  .node.mini{--pc:#9fb3ba;width:26px;height:26px;margin-top:6px;flex:0 0 26px;filter:none;box-shadow:0 2px 6px rgba(120,140,150,.35);}
   .node.mini::after{display:none;}
   .node svg{width:20px;height:20px;fill:#fff;display:block;}
   .node.mini svg{width:14px;height:14px;}
   .content{flex:1;min-width:0;padding-bottom:22px;}
   .item:last-child .content{padding-bottom:6px;}
-  .stop-c{cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:0 4px 12px rgba(90,60,30,.07);position:relative;transition:transform .12s, box-shadow .12s;}
-  .stop-c:hover{box-shadow:0 6px 16px rgba(90,60,30,.13);}
+  .stop-c{cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:0 4px 12px rgba(90,120,130,.07);position:relative;transition:transform .12s, box-shadow .12s;}
+  .stop-c:hover{box-shadow:0 6px 16px rgba(90,120,130,.13);}
   .stop-c:active{transform:scale(.99);}
   .stop-title{font-size:16px;font-weight:800;padding-right:26px;}
-  .stop-sub{font-size:12px;color:#6d6154;margin-top:4px;line-height:1.5;}
+  .stop-sub{font-size:12px;color:#63706b;margin-top:4px;line-height:1.5;}
   .stop-tag{display:inline-flex;align-items:center;margin-top:8px;font-size:11px;font-weight:700;background:var(--blue-soft);color:var(--blue-dark);padding:4px 9px;border-radius:6px;}
   .goarrow{position:absolute;right:12px;top:13px;width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;}
-  .walkbox{margin-top:10px;background:#fff;border:1px dashed var(--blue);border-radius:14px;padding:12px 14px;box-shadow:0 4px 12px rgba(90,60,30,.06);}
+  .walkbox{margin-top:10px;background:#fff;border:1px dashed var(--blue);border-radius:14px;padding:12px 14px;box-shadow:0 4px 12px rgba(90,120,130,.06);}
   .walkbox .wh{font-size:12.5px;font-weight:800;color:var(--blue-dark);display:flex;align-items:center;margin-bottom:8px;}
   .walkbox ol{margin:0;padding-left:18px;}
-  .walkbox li{font-size:12px;color:#5b5248;line-height:1.65;margin-bottom:4px;}
+  .walkbox li{font-size:12px;color:#5b6560;line-height:1.65;margin-bottom:4px;}
   .walkbox li:last-child{margin-bottom:0;}
   .walkbox li b{color:var(--ink);}
-  .infobox{margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:0 4px 12px rgba(90,60,30,.06);}
+  .infobox{margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:0 4px 12px rgba(90,120,130,.06);}
   .infobox .ih{font-size:12.5px;font-weight:800;color:var(--blue-dark);margin-bottom:7px;display:flex;align-items:center;}
   .infobox .seg-h{font-size:11.5px;font-weight:800;color:#3a6f30;margin:11px 0 6px;padding-top:10px;border-top:1px dashed var(--line);display:flex;align-items:center;}
   .infobox .seg-h:first-child{border-top:none;padding-top:0;margin-top:0;}
   .infobox .seg-h .ci{background:var(--green);margin-right:6px;}
   .infobox ul{margin:0;padding-left:16px;}
-  .infobox li{font-size:12px;color:#5b5248;line-height:1.6;margin-bottom:7px;}
+  .infobox li{font-size:12px;color:#5b6560;line-height:1.6;margin-bottom:7px;}
   .infobox li:last-child{margin-bottom:0;}
   .infobox li b{color:var(--ink);}
   .infobox li b.hot{color:var(--blue);}
@@ -116,15 +116,15 @@
   .infobox .note{font-size:11px;color:var(--gray);margin-top:8px;line-height:1.55;display:flex;align-items:flex-start;}
   .infobox .note .ci{margin-top:1px;}
   .transit{padding-top:4px;}
-  .transit-head{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:#6d6154;font-weight:700;cursor:pointer;user-select:none;background:#f1e8d8;border:1px solid var(--line);padding:6px 12px 6px 6px;border-radius:20px;}
+  .transit-head{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:#63706b;font-weight:700;cursor:pointer;user-select:none;background:#e9f0ee;border:1px solid var(--line);padding:6px 12px 6px 6px;border-radius:20px;}
   .transit-head .thi{width:22px;height:22px;background:#8a97a5;}
   .transit-head .thi svg{width:13px;height:13px;}
   .transit-head .caret{transition:transform .25s;font-size:11px;color:var(--gray);margin-left:2px;}
   .transit.open .caret{transform:rotate(90deg);}
   .routes{margin-top:9px;display:none;flex-direction:column;gap:8px;}
   .transit.open .routes{display:flex;}
-  .route{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 13px;box-shadow:0 3px 10px rgba(90,60,30,.06);position:relative;cursor:pointer;}
-  .route.sel{border-color:var(--blue);box-shadow:0 3px 12px rgba(207,58,46,.22);}
+  .route{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 13px;box-shadow:0 3px 10px rgba(90,120,130,.06);position:relative;cursor:pointer;}
+  .route.sel{border-color:var(--blue);box-shadow:0 3px 12px rgba(110,183,236,.22);}
   .route-top{display:flex;align-items:center;justify-content:space-between;gap:8px;}
   .route-time{font-size:14px;font-weight:800;display:flex;align-items:center;flex-wrap:wrap;gap:6px;}
   .route-time small{display:inline-block;color:#2f6f2a;background:#eef5e9;font-weight:800;font-size:10.5px;margin-left:0;padding:2px 8px;border-radius:8px;}
@@ -133,31 +133,31 @@
   .route.sel .check::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
   .segs{display:flex;align-items:center;gap:5px;margin-top:9px;flex-wrap:wrap;}
   .seg{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#fff;padding:3px 8px;border-radius:6px;white-space:nowrap;}
-  .seg.walk{background:#ece3d3;color:#6d6355;}
+  .seg.walk{background:#e3ebe9;color:#63706b;}
   .seg.l9{background:#c1a45a;} .seg.l3{background:#e08b2f;} .seg.l6{background:#a86b2c;} .seg.l2{background:#3a9b4f;} .seg.l7{background:#4a7a3a;} .seg.lsb{background:#d0313b;} .seg.arex{background:#3a6bbf;} .seg.taxi{background:#f2b705;}
   .choices{margin-top:10px;display:flex;flex-direction:column;gap:9px;}
-  .choice{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 4px 12px rgba(90,60,30,.06);}
+  .choice{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 4px 12px rgba(90,120,130,.06);}
   .choice-h{padding:11px 13px;display:flex;align-items:center;gap:7px;font-weight:800;font-size:13px;cursor:pointer;}
-  .choice-h .ci{background:#b32a20;}
+  .choice-h .ci{background:#6FB7EC;}
   .choice.b .choice-h .ci{background:#3a6f30;}
-  .choice.a .choice-h{background:#fdeceb;color:#b32a20;}
+  .choice.a .choice-h{background:#e9f4fb;color:#3E86C0;}
   .choice.b .choice-h{background:#eef5e9;color:#3a6f30;}
-  .choice-b{padding:9px 13px 12px;font-size:12px;color:#5b5248;line-height:1.6;}
+  .choice-b{padding:9px 13px 12px;font-size:12px;color:#5b6560;line-height:1.6;}
   .choice-b b{color:var(--ink);}
   .pill{font-size:10px;font-weight:800;padding:2px 7px;border-radius:6px;background:rgba(0,0,0,.06);margin-left:auto;}
-  .cta{margin:6px 16px 20px;background:var(--blue);color:#fff;text-align:center;padding:14px;border-radius:16px;font-weight:800;font-size:15px;box-shadow:0 6px 16px rgba(207,58,46,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;}
+  .cta{margin:6px 16px 20px;background:linear-gradient(135deg,#a3daff,#7ec3f0);color:#fff;text-align:center;padding:14px;border-radius:16px;font-weight:800;font-size:15px;box-shadow:0 6px 16px rgba(110,183,236,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;}
   .cta .ci{background:rgba(255,255,255,.28);width:20px;height:20px;} .cta .ci svg{width:12px;height:12px;}
   .foot{text-align:center;font-size:11px;color:var(--gray);padding:4px 0 22px;}
   .page{display:none;} .page.active{display:block;}
   .tkt-hd{padding:16px 18px 4px;font-size:20px;font-weight:900;letter-spacing:.5px;}
   .tkt-hd span{font-size:13px;font-weight:600;color:var(--gray);margin-left:8px;}
   .tkt-wrap{padding:12px 16px 4px;display:flex;flex-direction:column;gap:16px;}
-  .tkt{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 6px 18px rgba(90,60,30,.1);}
+  .tkt{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 6px 18px rgba(90,120,130,.1);}
   .tkt-head{position:relative;height:42px;}
   .tkt-head .hb{position:absolute;inset:0;background:var(--blue);clip-path:polygon(0 0,70% 0,58% 100%,0 100%);display:flex;align-items:center;gap:7px;padding-left:16px;color:#fff;font-weight:800;font-size:13px;letter-spacing:.5px;}
   .tkt-head .hb .ci{background:rgba(255,255,255,.28);width:18px;height:18px;} .tkt-head .hb .ci svg{width:11px;height:11px;}
   .tkt-head .hs{position:absolute;inset:0;background:var(--green);clip-path:polygon(70% 0,100% 0,100% 100%,58% 100%);display:flex;align-items:center;justify-content:flex-end;padding-right:18px;color:#fff;font-weight:800;font-size:12px;letter-spacing:1px;}
-  .tkt.ret .tkt-head .hs{background:#d99a3c;}
+  .tkt.ret .tkt-head .hs{background:#d47f7f;}
   .tkt-title{text-align:center;padding:16px 10px 2px;}
   .tkt-title .rt{font-size:30px;font-weight:900;letter-spacing:1px;}
   .tkt-title .sub{font-size:12px;color:var(--gray);margin-top:3px;font-weight:600;}
@@ -168,12 +168,12 @@
   .tbox .z{font-size:9px;font-weight:700;opacity:.9;margin-top:1px;letter-spacing:.5px;}
   .leg .info .l1{font-size:17px;font-weight:800;}
   .leg .info .l2{font-size:12px;color:var(--gray);margin-top:2px;}
-  .dur{background:#f1e8d8;color:#6d6154;text-align:center;font-size:12px;font-weight:800;letter-spacing:1px;padding:8px;margin:10px 0 14px;display:flex;align-items:center;justify-content:center;gap:6px;}
+  .dur{background:#e9f0ee;color:#63706b;text-align:center;font-size:12px;font-weight:800;letter-spacing:1px;padding:8px;margin:10px 0 14px;display:flex;align-items:center;justify-content:center;gap:6px;}
   .dur .ci{background:#8a97a5;width:17px;height:17px;} .dur .ci svg{width:10px;height:10px;}
   .ft-cap{padding:14px 18px 2px;font-size:12px;font-weight:800;color:var(--gray);letter-spacing:1px;}
   .ft-scroll{overflow-x:auto;margin:6px 16px 8px;-webkit-overflow-scrolling:touch;}
-  table.ft{border-collapse:collapse;min-width:600px;width:100%;font-size:11.5px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 3px 10px rgba(90,60,30,.06);}
-  table.ft th{background:#f3ecdd;color:#6d6154;font-weight:800;padding:9px 10px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap;}
+  table.ft{border-collapse:collapse;min-width:600px;width:100%;font-size:11.5px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 3px 10px rgba(90,120,130,.06);}
+  table.ft th{background:#eaf1ef;color:#63706b;font-weight:800;padding:9px 10px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap;}
   table.ft td{padding:10px;text-align:center;border-bottom:1px solid var(--line);color:var(--ink);white-space:nowrap;}
   table.ft tr:last-child td{border-bottom:none;}
   table.ft td .rt{color:var(--gray);font-size:10px;margin-top:2px;}
@@ -181,20 +181,20 @@
   .ov-hd span{font-size:13px;color:var(--gray);font-weight:600;margin-left:8px;}
   .ov-sub{padding:2px 18px 6px;font-size:12px;color:var(--gray);font-weight:600;}
   .ov-wrap{padding:10px 16px 12px;display:flex;flex-direction:column;gap:12px;}
-  .ov-card{display:flex;gap:13px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 4px 12px rgba(90,60,30,.07);cursor:pointer;align-items:center;transition:transform .12s,box-shadow .12s;}
-  .ov-card:hover{box-shadow:0 7px 18px rgba(90,60,30,.14);}
+  .ov-card{display:flex;gap:13px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 4px 12px rgba(90,120,130,.08);cursor:pointer;align-items:center;transition:transform .12s,box-shadow .12s;}
+  .ov-card:hover{box-shadow:0 7px 18px rgba(90,120,130,.16);}
   .ov-card:active{transform:scale(.99);}
-  .ov-badge{flex:0 0 58px;width:58px;height:58px;border-radius:14px;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(90,60,30,.2);}
-  .ov-badge.d1{background:linear-gradient(135deg,#4fbf97,#38997a);}
-  .ov-badge.d2{background:linear-gradient(135deg,#6bb0ea,#3E86C0);}
-  .ov-badge.d3{background:linear-gradient(135deg,#ef9a9a,#df7676);}
-  .ov-badge.d4{background:linear-gradient(135deg,#d9b45a,#c0902f);}
+  .ov-badge{flex:0 0 58px;width:58px;height:58px;border-radius:16px;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(90,120,130,.16);}
+  .ov-badge.d1{background:linear-gradient(135deg,#d9f3e5,#c3ecd4);}
+  .ov-badge.d2{background:linear-gradient(135deg,#c6e7ff,#a3daff);}
+  .ov-badge.d3{background:linear-gradient(135deg,#ffdada,#fec9c9);}
+  .ov-badge.d4{background:linear-gradient(135deg,#cbe0df,#ABD0CE);}
   .ov-badge .d{font-size:17px;font-weight:900;line-height:1;}
-  .ov-badge .dt{font-size:10px;font-weight:700;margin-top:4px;opacity:.95;}
+  .ov-badge .dt{font-size:10px;font-weight:700;margin-top:4px;opacity:.6;}
   .ov-body{flex:1;min-width:0;}
   .ov-area{font-size:17px;font-weight:800;display:flex;align-items:center;}
-  .ov-area .ci{background:var(--blue);width:20px;height:20px;margin-right:6px;} .ov-area .ci svg{width:12px;height:12px;}
-  .ov-desc{font-size:12px;color:#6d6154;margin-top:3px;line-height:1.5;}
+  .ov-area .ci{background:var(--blue-dark);width:20px;height:20px;margin-right:6px;} .ov-area .ci svg{width:12px;height:12px;}
+  .ov-desc{font-size:12px;color:#63706b;margin-top:4px;line-height:1.55;}
   .ov-tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;}
   .ov-tag{font-size:10.5px;font-weight:700;background:var(--blue-soft);color:var(--blue-dark);padding:3px 8px;border-radius:6px;}
   .ov-tag.hint{background:#fbf0df;color:#a67a24;}
@@ -232,9 +232,9 @@
   .mb-card{position:relative;display:flex;gap:14px;align-items:center;padding:12px 12px 14px;border-radius:18px;
     background:rgba(255,255,255,.38);border:1px solid rgba(255,255,255,.6);
     backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-    box-shadow:0 6px 18px rgba(90,60,30,.12),inset 0 1px 0 rgba(255,255,255,.7);}
+    box-shadow:0 6px 18px rgba(90,120,130,.12),inset 0 1px 0 rgba(255,255,255,.7);}
   .mb-pic{flex:0 0 96px;width:96px;height:96px;border-radius:14px;overflow:hidden;position:relative;
-    box-shadow:0 4px 12px rgba(90,60,30,.18);}
+    box-shadow:0 4px 12px rgba(90,120,130,.18);}
   .mb-pic img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#fff;}
   /* 缺圖時的質感底圖 */
   .mb-pic .ph{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;text-align:center;
@@ -252,30 +252,45 @@
   .mb-name{font-size:14.5px;font-weight:800;color:var(--ink);line-height:1.35;display:flex;align-items:flex-start;gap:6px;flex-wrap:wrap;}
   .mb-new{display:inline-block;background:var(--blue);color:#fff;font-size:9.5px;font-weight:900;
     padding:2px 6px;border-radius:5px;letter-spacing:.5px;vertical-align:middle;}
-  .mb-desc{font-size:12px;color:#6d6154;margin-top:5px;line-height:1.55;}
+  .mb-desc{font-size:12px;color:#63706b;margin-top:5px;line-height:1.55;}
   .mb-steps{margin-top:6px;display:flex;flex-direction:column;gap:5px;}
   .mb-steps .var{display:inline-flex;align-items:center;gap:5px;background:rgba(58,138,61,.12);color:#2f6f2a;
     font-weight:600;font-size:11.5px;padding:4px 9px;border-radius:7px;align-self:flex-start;}
   .mb-steps .var b{font-weight:800;letter-spacing:.3px;}
   .mb-note{margin-top:14px;font-size:11px;color:var(--gray);line-height:1.6;display:flex;align-items:flex-start;gap:6px;
     background:rgba(255,255,255,.4);border-radius:12px;padding:10px 12px;}
-  .mb-note .ci{background:#c9a15a;margin-top:1px;flex:0 0 auto;}
+  .mb-note .ci{background:#8fb1ad;margin-top:1px;flex:0 0 auto;}
 
   /* 篩選列 */
   .mb-filter{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:2px 2px 12px;}
   .mb-filter .fl-label{font-size:11px;font-weight:800;color:var(--gray);margin-right:2px;display:inline-flex;align-items:center;gap:4px;}
-  .fbtn{font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid var(--line);background:#fff;color:#6d6154;cursor:pointer;font-family:inherit;transition:all .15s;}
-  .fbtn.active{color:#fff;border-color:transparent;box-shadow:0 3px 8px rgba(90,60,30,.18);}
+  .fbtn{font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid var(--line);background:#fff;color:#63706b;cursor:pointer;font-family:inherit;transition:all .15s;}
+  .fbtn.active{color:#fff;border-color:transparent;box-shadow:0 3px 8px rgba(90,120,130,.18);}
   .fbtn[data-filter="all"].active{background:var(--ink);}
   .fbtn[data-filter="Cathy"].active{background:#67D5B5;}
   .fbtn[data-filter="Kiki"].active{background:#84B1ED;}
   .fbtn[data-filter="Pan"].active{background:#F7AA99;}
   /* 卡片右下角購買人標籤 */
   .mb-owners{position:absolute;right:12px;bottom:9px;display:flex;gap:5px;z-index:2;}
-  .owner{font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;color:#fff;letter-spacing:.3px;box-shadow:0 2px 5px rgba(90,60,30,.18);}
+  .owner{font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;color:#fff;letter-spacing:.3px;box-shadow:0 2px 5px rgba(90,120,130,.18);}
   .owner.cathy{background:#67D5B5;}
   .owner.kiki{background:#84B1ED;}
   .owner.pan{background:#F7AA99;}
+
+  /* 漢南洞必逛品牌彈窗 */
+  #hn-overlay{position:fixed;inset:0;z-index:120;display:none;align-items:flex-end;justify-content:center;background:rgba(44,30,20,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);}
+  #hn-overlay.show{display:flex;}
+  .hn-list{display:flex;flex-direction:column;gap:12px;}
+  .hn-card{display:flex;gap:12px;padding:12px 13px;border-radius:16px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);box-shadow:0 4px 12px rgba(90,120,130,.1);}
+  .hn-num{flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#a3daff,#cff0da);color:var(--ink);font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 8px rgba(120,140,150,.25);}
+  .hn-body{flex:1;min-width:0;}
+  .hn-name{font-size:14.5px;font-weight:800;color:var(--ink);display:flex;align-items:center;flex-wrap:wrap;gap:7px;}
+  .hn-walk{font-size:10.5px;font-weight:700;background:var(--blue-soft);color:var(--blue-dark);padding:2px 8px;border-radius:20px;}
+  .hn-route{font-size:11.5px;color:#63706b;margin-top:6px;line-height:1.6;}
+  .hn-desc{font-size:12px;color:var(--ink);margin-top:5px;line-height:1.65;}
+  .hn-route .ci,.hn-desc .ci{vertical-align:middle;}
+  .hn-end{margin-top:14px;font-size:11.5px;color:#63706b;line-height:1.6;display:flex;align-items:flex-start;gap:6px;background:rgba(255,255,255,.45);border-radius:12px;padding:11px 13px;}
+  .hn-end .ci{margin-top:1px;flex:0 0 auto;}
 </style>
 </head>
 <body>
@@ -310,7 +325,7 @@
 <div class="phone">
 
   <div class="top">
-    <div class="top-row"><div class="back">‹</div><div class="top-title">韓國自由行 · 首爾 4天</div><div class="share">⤴</div></div>
+    <div class="top-row"><div class="back">‹</div><div class="top-title">韓國錢包破掉之旅</div><div class="share">⤴</div></div>
     <div class="tabs">
       <div class="tab active" data-page="ticket"><span class="ci"><svg><use href="#ic-plane"/></svg></span>機票</div>
       <div class="tab" data-page="overview">總覽</div>
@@ -370,7 +385,7 @@
 
   <!-- 第 1 天 -->
   <div id="page-day1" class="page">
-  <div class="subbar"><div class="date">08/27 <span>星期四 · 抵達日</span></div><div class="mode-row"><div class="mode"><span class="ci"><svg><use href="#ic-train"/></svg></span>大眾運輸 ▾</div><div class="sortbtn"><span class="ci"><svg><use href="#ic-bolt"/></svg></span>一鍵排序</div></div></div>
+  <div class="subbar"><div class="date">08/27 <span>星期四 · 抵達日</span></div></div>
   <div class="flight">
     <h4><span class="htxt"><span class="ci hi"><svg><use href="#ic-plane"/></svg></span>航班資訊 · 去程</span><span class="carrier">濟州航空 Jeju Air</span></h4>
     <div class="fl-main">
@@ -490,17 +505,17 @@
   </div>
   <div class="total"><div class="th"><span class="ci"><svg><use href="#ic-cash"/></svg></span>交通費計算（第 1 天）</div><div class="tb">地鐵：約 <b>4,400 KRW／人</b>（1,600 + 1,400 + 1,400）<br>計程車：<b>12,000–15,000 KRW</b>（3 人分攤約 4,000–5,000／人）<br><span class="big">每人合計約 8,400–9,400 KRW（約台幣 190–215 元）</span></div></div>
   <div class="cta" id="cta"><span class="ci"><svg><use href="#ic-map"/></svg></span>開啟地圖檢視今日路線</div>
-  <div class="foot">第 1 天 · 金浦 → 新沙 → 新堂 → 東大門 · 共 8 個停靠點 ｜ ※ 車資為估算，以現場與首爾交通公社公告為準</div>
+  <div class="foot">第 1 天 · 金浦 → 新沙 → 新堂 → 東大門 · 共 8 個停靠點<br>※ 車資為估算，以現場與首爾交通公社公告為準</div>
   </div>
 
   <!-- 第 2 天 -->
   <div id="page-day2" class="page">
-  <div class="subbar"><div class="date">08/28 <span>星期五 · 明洞 · 漢南洞 · 解放村</span></div><div class="mode-row"><div class="mode"><span class="ci"><svg><use href="#ic-train"/></svg></span>大眾運輸 ▾</div><div class="sortbtn"><span class="ci"><svg><use href="#ic-bolt"/></svg></span>一鍵排序</div></div></div>
+  <div class="subbar"><div class="date">08/28 <span>星期五 · 明洞 · 漢南洞 · 解放村</span></div></div>
   <div class="rmap">
     <div class="rmt"><span class="ci hi"><svg><use href="#ic-map"/></svg></span>今日路線地圖一覽（含車資）</div>
     <div class="rmrow first" style="--c:#cf3a2e"><div class="rmline"><span class="rmdot"></span></div><div class="rmbody rmst"><div class="nm"><span class="rmic"><svg><use href="#ic-bag"/></svg></span>明洞 · 樂天百貨</div><div class="sb">10:30 開店進攻避退稅人潮</div></div></div>
-    <div class="rmrow" style="--c:#b3a48f"><div class="rmline"></div><div class="rmbody rmseg"><span class="lg" style="background:#b3a48f"><svg class="lgic"><use href="#ic-walk"/></svg>步行</span>走出百貨約 5 分入明洞主街</div></div>
-    <div class="rmrow" style="--c:#b3a48f"><div class="rmline"><span class="rmdot"></span></div><div class="rmbody rmst"><div class="nm"><span class="rmic"><svg><use href="#ic-food"/></svg></span>明洞 · 雪濃湯午餐</div><div class="sb">13:00 味成屋 / 明洞雪濃湯</div></div></div>
+    <div class="rmrow" style="--c:#9fb3ba"><div class="rmline"></div><div class="rmbody rmseg"><span class="lg" style="background:#9fb3ba"><svg class="lgic"><use href="#ic-walk"/></svg>步行</span>走出百貨約 5 分入明洞主街</div></div>
+    <div class="rmrow" style="--c:#9fb3ba"><div class="rmline"><span class="rmdot"></span></div><div class="rmbody rmst"><div class="nm"><span class="rmic"><svg><use href="#ic-food"/></svg></span>明洞 · 雪濃湯午餐</div><div class="sb">13:00 味成屋 / 明洞雪濃湯</div></div></div>
     <div class="rmrow" style="--c:#a86b2c"><div class="rmline"></div><div class="rmbody rmseg"><span class="lg" style="background:#3a9b4f">2號</span><span class="lg" style="background:#e08b2f">3號</span><span class="lg" style="background:#a86b2c">6號</span>明洞→漢江鎮 · 約 <span class="fare">1,400 KRW／人</span></div></div>
     <div class="rmrow" style="--c:#a86b2c"><div class="rmline"><span class="rmdot"></span></div><div class="rmbody rmst"><div class="nm"><span class="rmic"><svg><use href="#ic-bag"/></svg></span>漢南洞 · 選品散策</div><div class="sb">14:00 漢江鎮站 1 號出口 · 由北向南</div></div></div>
     <div class="rmrow" style="--c:#a86b2c"><div class="rmline"></div><div class="rmbody rmseg"><span class="lg" style="background:#a86b2c">6號線 2站</span>→綠莎坪＋好漢坡步行 · 約 <span class="fare">1,400 KRW／人</span></div></div>
@@ -515,19 +530,7 @@
     <div class="item"><div class="tcol"><div class="tm">13:00</div><div class="lb">午餐</div></div><div class="ncol"><div class="node"><svg><use href="#ic-food"/></svg></div></div><div class="content"><div class="stop-c" data-map="명동" data-label="明洞"><div class="goarrow">➤</div><div class="stop-title">明洞道地午餐（二選一）</div><div class="stop-sub">13:00 步行 5 分進明洞主街巷弄 · 逛街前補好體力基底</div><div class="stop-tag"><span class="ci tgi"><svg><use href="#ic-food"/></svg></span>雪濃湯二選一</div></div><div class="choices"><div class="choice a"><div class="choice-h" data-map="미성옥 명동" data-label="味成屋"><span class="ci"><svg><use href="#ic-fire"/></svg></span>提案 A ｜ 味成屋 미성옥 <span class="pill">60 年老字號</span></div><div class="choice-b">明洞在地老饕最愛的雪濃湯！湯頭清澈卻極濃郁，滿滿軟嫩韓牛切片，靈魂是桌上無限續加的酸甜蘿蔔泡菜。藏在隱密小巷，很有深夜食堂復古氛圍。</div></div><div class="choice b"><div class="choice-h" data-map="명동설농탕" data-label="明洞雪濃湯"><span class="ci"><svg><use href="#ic-food"/></svg></span>提案 B ｜ 明洞雪濃湯 명동설농탕 <span class="pill">經典</span></div><div class="choice-b">乳白牛骨高湯長時間熬煮、不加人工調味，上桌可依口味加蝦醬、鹽與大蔥，配白飯與細麵，暖胃又好消化，非常適合當逛街前的體力基底！</div></div></div></div></div>
     <div class="item"><div class="tcol"></div><div class="ncol"><div class="node mini"><svg><use href="#ic-train"/></svg></div></div><div class="content"><div class="transit"><div class="transit-head" onclick="this.parentElement.classList.toggle('open')"><span class="ci thi"><svg><use href="#ic-train"/></svg></span>明洞 → 漢南洞（漢江鎮站）<span class="caret">›</span></div><div class="routes"><div class="route sel"><div class="route-top"><div class="route-time">2號→3號→6號線 <small>約 1,400 KRW／人</small></div><div class="check"></div></div><div class="segs"><span class="seg walk">餐廳步行 2–3 分到乙支路入口站</span><span class="seg l2">2號線 1站→乙支路三街</span><span class="seg l3">轉 3號線 2站→藥水</span><span class="seg l6">轉 6號線 2站→漢江鎮</span></div></div></div><div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">防呆：請從漢江鎮站【1 號出口】出站（有上行電扶梯），提著樂天戰利品最省力！</div></div></div></div>
     <div class="item"><div class="tcol"><div class="tm">14:00</div><div class="lb">STAGE 2</div></div><div class="ncol"><div class="node"><svg><use href="#ic-bag"/></svg></div></div><div class="content"><div class="stop-c" data-map="한남동" data-label="漢南洞"><div class="goarrow">➤</div><div class="stop-title">漢南洞 · 選品散策</div><div class="stop-sub">14:00 起 · 由北向南順著漢南洞下坡路一路逛（含逐店步行指引）</div><div class="stop-tag"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span>帽款 · 設計師包 · 眼鏡 · 選品</div></div>
-      <div class="infobox">
-        <div class="ih"><span class="ci hi"><svg><use href="#ic-bag"/></svg></span>由北向南順逛（漢江鎮站 1 號出口起）</div>
-        <ul>
-          <li><b>1. Awesome Needs</b>（步行約 2 分）<br><span class="il"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span></span>1 號出口直走約 100m → 見梨泰院路54巷右轉、順小坡上，店在左手邊。<br><span class="il"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span></span>試戴澎澎雲朵帽、貝雷帽與經典漁夫帽，挑一頂當穿搭亮點。</li>
-          <li><b>2. Beaker 漢南旗艦店</b>（步行約 3 分）<br><span class="il"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span></span>原路回大馬路（梨泰院路），向西直走約 150m 過小馬路，超大指標建築在右手邊。<br><span class="il"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span></span>大型複合選品，歐美日韓一線潮牌＋必逛精緻美學家飾專區。</li>
-          <li><b>3. Folnua 漢南店</b>（步行約 4 分）<br><span class="il"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span></span>從 Beaker 旁的梨泰院路54街巷弄轉進，順下坡經咖啡廳，門市在左側巷弄延伸處。<br><span class="il"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span></span>韓國小眾設計師包天花板！流線皮革、法式慵懶，腋下包與微方包必試。</li>
-          <li><b>4. Atelier de LUMEN</b>（步行約 2 分）<br><span class="il"><span class="ci tgi"><svg><use href="#ic-warn"/></svg></span></span>從 Folnua 續往內（向南）走，交叉路口留意指標，就在隔壁復古洋房內。<br><span class="il"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span></span>文藝復興浪漫復古感包款，店如藝術畫廊，法式水桶包、手提包質感炸裂。</li>
-          <li><b>5. NEOTERIA</b>（步行約 3 分）<br><span class="il"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span></span>回到漢南洞主巷大路，順下坡穿過服飾區即到。<br><span class="il"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span></span>最火復古潮流眼鏡，試戴時髦 Y2K 鏡框，一秒變高街時髦精。</li>
-          <li><b>6. Aeae 漢南旗艦店</b>（步行約 2 分）<br><span class="il"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span></span>續往下坡直行約 80m，即見美式街頭復古風門市。<br><span class="il"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span></span>MZ 世代最愛的水洗老帽、OVERSIZE 上衣與美式休閒中性服飾。</li>
-          <li><b>7. Square Line</b>（步行約 3 分）<br><span class="il"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span></span>沿主線走到這區尾端（近漢南大路），下坡結束、接近大馬路邊的質感店面。<br><span class="il"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span></span>平價包包店，高 CP 純素皮革包，適合瘋狂包色收工！</li>
-        </ul>
-        <div class="note"><span class="ci ni"><svg><use href="#ic-flag"/></svg></span><span>終點：從 Square Line 沿大馬路往上坡走 5–7 分回漢江鎮站，搭 6 號線 2 站前往綠莎坪（解放村）。</span></div>
-      </div>
+      <button class="mustbuy-btn" id="brandBtn"><span class="ci"><svg><use href="#ic-bag"/></svg></span>必逛品牌</button>
     </div></div>
     <div class="item"><div class="tcol"></div><div class="ncol"><div class="node mini"><svg><use href="#ic-train"/></svg></div></div><div class="content"><div class="transit"><div class="transit-head" onclick="this.parentElement.classList.toggle('open')"><span class="ci thi"><svg><use href="#ic-train"/></svg></span>漢南洞 → 解放村山腳 <span class="caret">›</span></div><div class="routes"><div class="route sel"><div class="route-top"><div class="route-time">1 站 + 步行上坡 <small>約 1,400 KRW／人</small></div><div class="check"></div></div><div class="segs"><span class="seg walk">走回漢江鎮站</span><span class="seg l6">6號線 2站→綠莎坪</span><span class="seg walk">2號出口 → 好漢坡 15–20 分陡坡</span></div></div></div><div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">出站順大路轉進解放村街（해방촌길），朝新興市場方向上山，剛好當大餐後微運動。</div></div></div></div>
     <div class="item"><div class="tcol"><div class="tm">18:00</div><div class="lb">STAGE 3</div></div><div class="ncol"><div class="node sun"><svg><use href="#ic-sun"/></svg></div></div><div class="content"><div class="stop-c" data-map="해방촌" data-label="解放村"><div class="goarrow">➤</div><div class="stop-title">解放村 · 餐盤選物 & 19:00 絕美日落</div><div class="stop-sub">18:00–20:30 · 餐盤選品 → 夕陽網美照 → 頂樓百萬夜景</div><div class="stop-tag"><span class="ci tgi"><svg><use href="#ic-sun"/></svg></span>日落 · 餐盤 · 夜景露台</div></div><div class="infobox"><div class="ih"><span class="ci hi"><svg><use href="#ic-sun"/></svg></span>解放村日落動線</div><ul><li><b>Sinon Shop 시논샵</b>：趁打烊前把法式復古瓷盤、選品彩色玻璃杯買齊，請店員用氣泡紙嚴密包緊。</li><li><b>Bless Brunch Bar</b>：<b>19:00 前後</b> 夕陽最高潮！搶歐風戶外座位，在金黃晚霞灑落的異國感街道旁拍人生網美照。</li><li><b>The Royal Food and Drink</b>：移防頂樓露台，吃輕食俯瞰解放村平房＋對岸江南、首爾塔萬家燈火百萬夜景。</li></ul><div class="note"><span class="ci ni"><svg><use href="#ic-bulb"/></svg></span><span>備案：Formula Coffee。</span></div></div></div></div>
@@ -536,18 +539,18 @@
   </div>
   <div class="total"><div class="th"><span class="ci"><svg><use href="#ic-cash"/></svg></span>交通費計算（第 2 天）</div><div class="tb">地鐵：約 <b>4,200 KRW／人</b>（1,400 + 1,400 + 1,400）· 全程無計程車<br><span class="big">每人合計約 4,200 KRW（約台幣 96 元）</span></div></div>
   <div class="cta" id="cta2"><span class="ci"><svg><use href="#ic-map"/></svg></span>開啟地圖檢視今日路線</div>
-  <div class="foot">第 2 天 · 明洞 → 漢南洞 → 解放村 · 共 5 個停靠點 ｜ ※ 車資為估算，以現場與首爾交通公社公告為準</div>
+  <div class="foot">第 2 天 · 明洞 → 漢南洞 → 解放村 · 共 5 個停靠點<br>※ 車資為估算，以現場與首爾交通公社公告為準</div>
   </div>
 
   <!-- 第 3 天 -->
   <div id="page-day3" class="page">
-  <div class="subbar"><div class="date">08/29 <span>星期六 · 醫美 · 建大 · 聖水 · 漢江</span></div><div class="mode-row"><div class="mode"><span class="ci"><svg><use href="#ic-train"/></svg></span>大眾運輸 ▾</div><div class="sortbtn"><span class="ci"><svg><use href="#ic-bolt"/></svg></span>一鍵排序</div></div></div>
+  <div class="subbar"><div class="date">08/29 <span>星期六 · 醫美 · 建大 · 聖水 · 漢江</span></div></div>
   <div class="rmap">
     <div class="rmt"><span class="ci hi"><svg><use href="#ic-map"/></svg></span>今日路線地圖一覽（含車資）</div>
-    <div class="rmrow first" style="--c:#c94f8a"><div class="rmline"><span class="rmdot"></span></div><div class="rmbody rmst"><div class="nm"><span class="rmic"><svg><use href="#ic-med"/></svg></span>江南 · 醫美體驗</div><div class="sb">09:30–12:00 皮膚管理／雷射</div></div></div>
+    <div class="rmrow first" style="--c:#C98FB4"><div class="rmline"><span class="rmdot"></span></div><div class="rmbody rmst"><div class="nm"><span class="rmic"><svg><use href="#ic-med"/></svg></span>江南 · 醫美體驗</div><div class="sb">09:30–12:00 皮膚管理／雷射</div></div></div>
     <div class="rmrow" style="--c:#3a9b4f"><div class="rmline"></div><div class="rmbody rmseg"><span class="lg" style="background:#e08b2f">3號</span><span class="lg" style="background:#3a9b4f">2號</span>新沙→建大入口（6 號出口）約 20 分 · 約 <span class="fare">1,500 KRW／人</span></div></div>
     <div class="rmrow" style="--c:#3a9b4f"><div class="rmline"><span class="rmdot"></span></div><div class="rmbody rmst"><div class="nm"><span class="rmic"><svg><use href="#ic-food"/></svg></span>建大入口站 · 午餐</div><div class="sb">12:30 朝朝刀削麵建大店（6 號出口）</div></div></div>
-    <div class="rmrow" style="--c:#b3a48f"><div class="rmline"></div><div class="rmbody rmseg"><span class="lg" style="background:#b3a48f"><svg class="lgic"><use href="#ic-walk"/></svg>步行</span>沿聖水路往西 → 聖水站外帶點心 → 演武場街由東向西</div></div>
+    <div class="rmrow" style="--c:#9fb3ba"><div class="rmline"></div><div class="rmbody rmseg"><span class="lg" style="background:#9fb3ba"><svg class="lgic"><use href="#ic-walk"/></svg>步行</span>沿聖水路往西 → 聖水站外帶點心 → 演武場街由東向西</div></div>
     <div class="rmrow" style="--c:#cf3a2e"><div class="rmline"><span class="rmdot"></span></div><div class="rmbody rmst"><div class="nm"><span class="rmic"><svg><use href="#ic-bag"/></svg></span>聖水洞 · 爆買街</div><div class="sb">14:00 20 家精選品牌</div></div></div>
     <div class="rmrow" style="--c:#4a7a3a"><div class="rmline"></div><div class="rmbody rmseg"><span class="lg" style="background:#4a7a3a">7號線 1–2站</span>纛島→纛島遊園地 · 約 <span class="fare">1,400 KRW／人</span></div></div>
     <div class="rmrow" style="--c:#e08b2f"><div class="rmline"><span class="rmdot"></span></div><div class="rmbody rmst"><div class="nm"><span class="rmic"><svg><use href="#ic-sun"/></svg></span>纛島漢江公園 · 野餐</div><div class="sb">18:00 日落＋炸雞泡麵</div></div></div>
@@ -568,12 +571,12 @@
   </div>
   <div class="total"><div class="th"><span class="ci"><svg><use href="#ic-cash"/></svg></span>交通費計算（第 3 天）</div><div class="tb">地鐵（每人 3 趟）：<br>· 新沙 → 建大入口 <b>1,500</b>（超基本里程一點點）<br>· 纛島 → 纛島遊園地 <b>1,400</b> · 纛島遊園地 → 新沙 <b>1,400</b><br><span class="big">每人合計約 4,300 KRW（約台幣 100–105 元）</span></div></div>
   <div class="cta" id="cta3"><span class="ci"><svg><use href="#ic-map"/></svg></span>開啟地圖檢視今日路線</div>
-  <div class="foot">第 3 天 · 江南醫美 → 建大 → 聖水洞 → 纛島漢江 · 共 5 個停靠點 ｜ ※ 車資為估算，以現場與首爾交通公社公告為準</div>
+  <div class="foot">第 3 天 · 江南醫美 → 建大 → 聖水洞 → 纛島漢江 · 共 5 個停靠點<br>※ 車資為估算，以現場與首爾交通公社公告為準</div>
   </div>
 
   <!-- 第 4 天 -->
   <div id="page-day4" class="page">
-  <div class="subbar"><div class="date">08/30 <span>星期日 · 回程日</span></div><div class="mode-row"><div class="mode"><span class="ci"><svg><use href="#ic-train"/></svg></span>大眾運輸 ▾</div><div class="sortbtn"><span class="ci"><svg><use href="#ic-bolt"/></svg></span>一鍵排序</div></div></div>
+  <div class="subbar"><div class="date">08/30 <span>星期日 · 回程日</span></div></div>
   <div class="flight">
     <h4><span class="htxt"><span class="ci hi"><svg><use href="#ic-plane"/></svg></span>回程航班</span><span class="carrier">德威航空 TW0669</span></h4>
     <div class="fl-main">
@@ -600,7 +603,7 @@
   </div>
   <div class="total"><div class="th"><span class="ci"><svg><use href="#ic-cash"/></svg></span>交通費計算（第 4 天）</div><div class="tb">地鐵 ＋ AREX 一般列車：新沙 → 仁川機場 T1 約 <b>4,750 KRW／人</b>（含市區地鐵段）<br><span class="big">每人合計約 4,750 KRW（約台幣 108 元）</span></div></div>
   <div class="cta" id="cta4"><span class="ci"><svg><use href="#ic-map"/></svg></span>開啟地圖檢視今日路線</div>
-  <div class="foot">第 4 天 · 新沙 → 弘大入口 → 仁川機場 T1 · 13:55 起飛 ｜ ※ 車資為估算，以現場與首爾交通公社公告為準</div>
+  <div class="foot">第 4 天 · 新沙 → 弘大入口 → 仁川機場 T1 · 13:55 起飛<br>※ 車資為估算，以現場與首爾交通公社公告為準</div>
   </div>
 
 </div>
@@ -708,6 +711,76 @@
   </div>
 </div>
 
+<div id="hn-overlay">
+  <div class="mb-sheet" role="dialog" aria-modal="true" aria-label="漢南洞必逛品牌">
+    <div class="mb-head">
+      <div class="mb-grip"></div>
+      <div class="mb-t"><span class="ci"><svg><use href="#ic-bag"/></svg></span>漢南洞 · 必逛品牌</div>
+      <button class="mb-x" id="hnClose" aria-label="關閉">×</button>
+    </div>
+    <div class="mb-sub">由北向南順逛（漢江鎮站 1 號出口起）</div>
+    <div class="hn-list">
+      <div class="hn-card">
+        <div class="hn-num">1</div>
+        <div class="hn-body">
+          <div class="hn-name">Awesome Needs<span class="hn-walk">步行約 2 分</span></div>
+          <div class="hn-route"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span>1 號出口直走約 100m → 見梨泰院路54巷右轉、順小坡上，店在左手邊。</div>
+          <div class="hn-desc"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span>試戴澎澎雲朵帽、貝雷帽與經典漁夫帽，挑一頂當穿搭亮點。</div>
+        </div>
+      </div>
+      <div class="hn-card">
+        <div class="hn-num">2</div>
+        <div class="hn-body">
+          <div class="hn-name">Beaker 漢南旗艦店<span class="hn-walk">步行約 3 分</span></div>
+          <div class="hn-route"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span>原路回大馬路（梨泰院路），向西直走約 150m 過小馬路，超大指標建築在右手邊。</div>
+          <div class="hn-desc"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span>大型複合選品，歐美日韓一線潮牌＋必逛精緻美學家飾專區。</div>
+        </div>
+      </div>
+      <div class="hn-card">
+        <div class="hn-num">3</div>
+        <div class="hn-body">
+          <div class="hn-name">Folnua 漢南店<span class="hn-walk">步行約 4 分</span></div>
+          <div class="hn-route"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span>從 Beaker 旁的梨泰院路54街巷弄轉進，順下坡經咖啡廳，門市在左側巷弄延伸處。</div>
+          <div class="hn-desc"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span>韓國小眾設計師包天花板！流線皮革、法式慵懶，腋下包與微方包必試。</div>
+        </div>
+      </div>
+      <div class="hn-card">
+        <div class="hn-num">4</div>
+        <div class="hn-body">
+          <div class="hn-name">Atelier de LUMEN<span class="hn-walk">步行約 2 分</span></div>
+          <div class="hn-route"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span>從 Folnua 續往內（向南）走，交叉路口留意指標，就在隔壁復古洋房內。</div>
+          <div class="hn-desc"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span>文藝復興浪漫復古感包款，店如藝術畫廊，法式水桶包、手提包質感炸裂。</div>
+        </div>
+      </div>
+      <div class="hn-card">
+        <div class="hn-num">5</div>
+        <div class="hn-body">
+          <div class="hn-name">NEOTERIA<span class="hn-walk">步行約 3 分</span></div>
+          <div class="hn-route"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span>回到漢南洞主巷大路，順下坡穿過服飾區即到。</div>
+          <div class="hn-desc"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span>最火復古潮流眼鏡，試戴時髦 Y2K 鏡框，一秒變高街時髦精。</div>
+        </div>
+      </div>
+      <div class="hn-card">
+        <div class="hn-num">6</div>
+        <div class="hn-body">
+          <div class="hn-name">Aeae 漢南旗艦店<span class="hn-walk">步行約 2 分</span></div>
+          <div class="hn-route"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span>續往下坡直行約 80m，即見美式街頭復古風門市。</div>
+          <div class="hn-desc"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span>MZ 世代最愛的水洗老帽、OVERSIZE 上衣與美式休閒中性服飾。</div>
+        </div>
+      </div>
+      <div class="hn-card">
+        <div class="hn-num">7</div>
+        <div class="hn-body">
+          <div class="hn-name">Square Line<span class="hn-walk">步行約 3 分</span></div>
+          <div class="hn-route"><span class="ci tgi"><svg><use href="#ic-walk"/></svg></span>沿主線走到這區尾端（近漢南大路），下坡結束、接近大馬路邊的質感店面。</div>
+          <div class="hn-desc"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span>平價包包店，高 CP 純素皮革包，適合瘋狂包色收工！</div>
+        </div>
+      </div>
+    </div>
+    <div class="hn-end"><span class="ci ni"><svg><use href="#ic-flag"/></svg></span><span>終點：從 Square Line 沿大馬路往上坡走 5–7 分回漢江鎮站，搭 6 號線 2 站前往綠莎坪（解放村）。</span></div>
+  </div>
+</div>
+
 <div id="toast"></div>
 
 <script>
@@ -746,6 +819,15 @@
     });
     document.querySelectorAll('#mb-overlay .mb-owners').forEach(function(o){o.style.display=(fil==='all')?'':'none';});
   });});
+  var hnOverlay=document.getElementById('hn-overlay');
+  var brandBtn=document.getElementById('brandBtn');
+  var hnClose=document.getElementById('hnClose');
+  function openHn(){hnOverlay.classList.add('show');document.body.style.overflow='hidden';}
+  function closeHn(){hnOverlay.classList.remove('show');document.body.style.overflow='';}
+  if(brandBtn)brandBtn.addEventListener('click',function(e){e.stopPropagation();openHn();});
+  if(hnClose)hnClose.addEventListener('click',closeHn);
+  if(hnOverlay)hnOverlay.addEventListener('click',function(e){if(e.target===hnOverlay)closeHn();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeHn();});
 </script>
 </body>
 </html>
