@@ -55,7 +55,7 @@
   .rmline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;transform:translateX(-50%);background:#d6e2de;border-radius:4px;}
   .rmrow.first .rmline::before{top:10px;}
   .rmrow.last .rmline::before{height:10px;bottom:auto;}
-  .rmdot{position:absolute;left:50%;top:4px;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #b7ccd3;z-index:2;box-shadow:0 1px 3px rgba(90,120,130,.25);}
+  .rmdot{position:absolute;left:50%;top:4px;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #9dc8e8;z-index:2;box-shadow:0 1px 3px rgba(90,120,130,.25);}
   .rmbody{flex:1;padding-bottom:11px;}
   .rmst .nm{font-size:13.5px;font-weight:800;display:flex;align-items:center;}
   .rmic{display:inline-flex;width:22px;height:22px;flex:0 0 22px;border-radius:50%;background:linear-gradient(135deg,#8fcdf3,#6FB7EC);align-items:center;justify-content:center;margin-right:8px;box-shadow:0 2px 5px rgba(110,150,180,.3);}
@@ -291,9 +291,11 @@
   .hn-route .ci,.hn-desc .ci{vertical-align:middle;}
   .hn-end{margin-top:14px;font-size:11.5px;color:#63706b;line-height:1.6;display:flex;align-items:flex-start;gap:6px;background:rgba(255,255,255,.45);border-radius:12px;padding:11px 13px;}
   .hn-end .ci{margin-top:1px;flex:0 0 auto;}
-  .rmrow.last .rmic{background:linear-gradient(135deg,#7fd0ab,#46a487);}
-  .rmrow.last .rmdot{border-color:#46a487;}
-  .rmrow.first .rmdot{border-color:#6FB7EC;}
+  /* 站點分類色：交通住宿=藍(預設) / 美食=琥珀 / 購物景點體驗=綠 */
+  .rmic:has(use[href="#ic-food"]){background:linear-gradient(135deg,#f2c988,#E6A874);}
+  .rmic:has(use[href="#ic-bag"]),.rmic:has(use[href="#ic-sun"]),.rmic:has(use[href="#ic-med"]){background:linear-gradient(135deg,#7fd0ab,#46a487);}
+  .rmrow:has(use[href="#ic-food"]) .rmdot{border-color:#E6A874;}
+  .rmrow:has(use[href="#ic-bag"]) .rmdot,.rmrow:has(use[href="#ic-sun"]) .rmdot,.rmrow:has(use[href="#ic-med"]) .rmdot{border-color:#46a487;}
 </style>
 </head>
 <body>
