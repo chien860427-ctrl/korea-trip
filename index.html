@@ -373,6 +373,14 @@
   .mb-removed{display:none!important;}
   .mb-add-inline{margin-left:auto;font-size:12px;font-weight:800;padding:7px 14px;border-radius:20px;border:none;cursor:pointer;font-family:inherit;color:var(--ink);background:linear-gradient(135deg,#a3daff,#cff0da);box-shadow:0 3px 8px rgba(120,140,150,.28);transition:box-shadow .15s;}
   .mb-add-inline:hover{box-shadow:0 5px 13px rgba(120,140,150,.38);}
+  .mb-menu{position:absolute;top:9px;right:10px;width:26px;height:26px;border-radius:50%;border:none;background:rgba(90,120,130,.1);color:#8a9a95;font-size:17px;font-weight:900;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:3;font-family:inherit;padding:0;}
+  .mb-menu:hover{background:rgba(90,120,130,.2);color:#5c6b66;}
+  .mb-cardmenu{position:fixed;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 32px rgba(90,120,130,.3);padding:12px;z-index:9999;min-width:170px;}
+  .cm-label{font-size:10px;font-weight:800;color:var(--gray);margin-bottom:7px;letter-spacing:.6px;}
+  .cm-people{display:flex;gap:6px;margin-bottom:10px;}
+  .cm-del{width:100%;border:none;background:#fdeeee;color:#c85a5a;font-weight:800;font-size:12px;padding:9px;border-radius:10px;cursor:pointer;font-family:inherit;}
+  .cm-del:hover{background:#f6d9d9;}
+  .owner{box-shadow:0 2px 5px rgba(90,120,130,.14);}
 </style>
 </head>
 <body>
@@ -965,7 +973,7 @@
   if(mbOverlay)mbOverlay.addEventListener('click',function(e){if(e.target===mbOverlay)closeMustbuy();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMustbuy();});
   document.querySelectorAll('.fbtn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.fbtn').forEach(function(x){x.classList.remove('active');});b.classList.add('active');mbApplyFilter();});});
-  function mbApplyFilter(){var a=document.querySelector('#mb-overlay .fbtn.active');var fil=a?a.getAttribute('data-filter'):'all';document.querySelectorAll('#mb-overlay .mb-card').forEach(function(card){if(card.classList.contains('mb-removed')){card.style.display='none';return;}var ow=(card.getAttribute('data-owners')||'').split(' ');card.style.display=(fil==='all'||ow.indexOf(fil)>=0)?'':'none';});document.querySelectorAll('#mb-overlay .mb-owners').forEach(function(o){o.style.display=(fil==='all')?'':'none';});document.querySelectorAll('#mb-overlay .mb-del').forEach(function(d){d.style.display=(fil==='all')?'flex':'none';});}
+  function mbApplyFilter(){var a=document.querySelector('#mb-overlay .fbtn.active');var fil=a?a.getAttribute('data-filter'):'all';document.querySelectorAll('#mb-overlay .mb-card').forEach(function(card){if(card.classList.contains('mb-removed')){card.style.display='none';return;}var ow=(card.getAttribute('data-owners')||'').split(' ');card.style.display=(fil==='all'||ow.indexOf(fil)>=0)?'':'none';});document.querySelectorAll('#mb-overlay .mb-owners').forEach(function(o){o.style.display=(fil==='all')?'':'none';});document.querySelectorAll('#mb-overlay .mb-menu').forEach(function(d){d.style.display=(fil==='all')?'flex':'none';});}
   var hnOverlay=document.getElementById('hn-overlay');
   var brandBtn=document.getElementById('brandBtn');
   var hnClose=document.getElementById('hnClose');
@@ -1001,16 +1009,15 @@
     function selId(id){return list.querySelector('.mb-card[data-id="'+(window.CSS&&CSS.escape?CSS.escape(id):id)+'"]');}
     function origCards(){return Array.prototype.filter.call(list.querySelectorAll('.mb-card'),function(c){return c.dataset.custom!=='1';});}
     list.querySelectorAll('.mb-card').forEach(function(card){if(!card.dataset.id){var pic=card.querySelector('.mb-pic'),g='';if(pic){pic.classList.forEach(function(c){if(/^g\d+$/.test(c))g=c;});}card.dataset.id=g||('o'+Math.random().toString(36).slice(2,7));}defaults[card.dataset.id]=card.dataset.owners||'';});
-    function closeMenu(){var m=overlay.querySelector('.mb-tagmenu');if(m)m.remove();}
+    function closeMenu(){var m=document.querySelector('.mb-cardmenu');if(m)m.remove();}
     function sortOwners(o){o.sort(function(x,y){return ORDER.indexOf(x)-ORDER.indexOf(y);});return o;}
     function toggleOwner(card,p){var o=(card.dataset.owners||'').split(' ').filter(Boolean);var i=o.indexOf(p);if(i>=0)o.splice(i,1);else o.push(p);sortOwners(o);card.dataset.owners=o.join(' ');renderControls(card);mbApplyFilter();persistOwners(card);}
-    function openMenu(card){closeMenu();var o=(card.dataset.owners||'').split(' ').filter(Boolean);var menu=document.createElement('div');menu.className='mb-tagmenu';ORDER.forEach(function(p){var bb=document.createElement('button');bb.type='button';bb.className='mb-tagopt '+p.toLowerCase()+(o.indexOf(p)>=0?' active':'');bb.textContent=p;bb.addEventListener('click',function(e){e.stopPropagation();toggleOwner(card,p);bb.classList.toggle('active');});menu.appendChild(bb);});card.appendChild(menu);setTimeout(function(){document.addEventListener('click',closeMenu,{once:true});},0);}
+    function openMenu(card){closeMenu();var btn=card.querySelector('.mb-menu');var o=(card.dataset.owners||'').split(' ').filter(Boolean);var menu=document.createElement('div');menu.className='mb-cardmenu';menu.addEventListener('click',function(e){e.stopPropagation();});var lbl=document.createElement('div');lbl.className='cm-label';lbl.textContent='誰要買';menu.appendChild(lbl);var ppl=document.createElement('div');ppl.className='cm-people';ORDER.forEach(function(p){var bb=document.createElement('button');bb.type='button';bb.className='mb-tagopt '+p.toLowerCase()+(o.indexOf(p)>=0?' active':'');bb.textContent=p;bb.addEventListener('click',function(e){e.stopPropagation();toggleOwner(card,p);bb.classList.toggle('active');});ppl.appendChild(bb);});menu.appendChild(ppl);var del=document.createElement('button');del.type='button';del.className='cm-del';del.textContent='刪除商品';del.addEventListener('click',function(e){e.stopPropagation();closeMenu();if(confirm('確定要刪除這個商品嗎？'))removeCard(card);});menu.appendChild(del);document.body.appendChild(menu);var r=(btn||card).getBoundingClientRect();var mw=menu.offsetWidth,mh=menu.offsetHeight;var left=r.right-mw;if(left+mw>window.innerWidth-8)left=window.innerWidth-8-mw;if(left<8)left=8;var top=r.bottom+6;if(top+mh>window.innerHeight-8)top=r.top-mh-6;if(top<8)top=8;menu.style.left=left+'px';menu.style.top=top+'px';setTimeout(function(){document.addEventListener('click',closeMenu,{once:true});},0);}
     function renderControls(card){
       var o=(card.dataset.owners||'').split(' ').filter(Boolean);
       var box=card.querySelector('.mb-owners');if(!box){box=document.createElement('div');box.className='mb-owners';card.appendChild(box);}
-      box.innerHTML=o.map(function(p){return '<span class="owner '+p.toLowerCase()+'">'+p+'</span>';}).join('')+'<button class="mb-tagedit" type="button" title="加入/移除購買人">＋</button>';
-      box.querySelector('.mb-tagedit').addEventListener('click',function(e){e.stopPropagation();openMenu(card);});
-      if(!card.querySelector('.mb-del')){var del=document.createElement('button');del.className='mb-del';del.type='button';del.title='刪除商品';del.textContent='×';del.addEventListener('click',function(e){e.stopPropagation();if(confirm('確定要刪除這個商品嗎？'))removeCard(card);});card.appendChild(del);}
+      box.innerHTML=o.map(function(p){return '<span class="owner '+p.toLowerCase()+'">'+p+'</span>';}).join('');
+      if(!card.querySelector('.mb-menu')){var mb=document.createElement('button');mb.className='mb-menu';mb.type='button';mb.title='編輯 / 刪除';mb.innerHTML='&#8943;';mb.addEventListener('click',function(e){e.stopPropagation();openMenu(card);});card.appendChild(mb);}
     }
     function removeCard(card){var id=card.dataset.id;if(card.dataset.custom==='1'){backend.remove(id);}else{backend.write('del__'+id,{kind:'deleted',cardId:id});}card.classList.add('mb-removed');card.style.display='none';}
     function persistOwners(card){var id=card.dataset.id,owners=card.dataset.owners||'';if(card.dataset.custom==='1'){var d=lastItems[id]||{};backend.write(id,{kind:'custom',owners:owners,title:card.querySelector('.mb-name').textContent,desc:card.querySelector('.mb-desc')?card.querySelector('.mb-desc').textContent:'',img:(card.querySelector('.mb-pic img')||{}).src||d.img||''});}else{backend.write('ov__'+id,{kind:'override',cardId:id,owners:owners});}}
