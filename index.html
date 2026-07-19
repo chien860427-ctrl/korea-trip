@@ -381,6 +381,29 @@
   .cm-del{width:100%;border:none;background:#fdeeee;color:#c85a5a;font-weight:800;font-size:12px;padding:9px;border-radius:10px;cursor:pointer;font-family:inherit;}
   .cm-del:hover{background:#f6d9d9;}
   .owner{box-shadow:0 2px 5px rgba(90,120,130,.14);}
+  .af-drop-inner{width:100%;padding:24px 10px;border:none;background:none;cursor:pointer;text-align:center;font-size:12.5px;font-weight:700;color:#6d8a99;line-height:1.7;font-family:inherit;}
+  .af-crop{width:100%;max-width:240px;aspect-ratio:1/1;margin:0 auto;border-radius:12px;overflow:hidden;position:relative;background:#fff;border:1px solid var(--line);touch-action:none;cursor:grab;}
+  .af-crop:active{cursor:grabbing;}
+  .af-crop img{position:absolute;left:0;top:0;user-select:none;-webkit-user-drag:none;pointer-events:none;max-width:none;}
+  .af-hint{font-size:10.5px;color:var(--gray);text-align:center;margin:8px 0 2px;}
+  .af-zoomrow{display:flex;align-items:center;gap:10px;margin:8px 0 12px;font-size:11.5px;font-weight:700;color:var(--gray);}
+  .af-zoomrow input[type=range]{flex:1;accent-color:#6FB7EC;}
+  .af-repick{border:1px solid var(--line);background:#fff;color:#63706b;font-size:11px;font-weight:700;padding:5px 11px;border-radius:20px;cursor:pointer;font-family:inherit;}
+  .req{color:#e05a5a;font-weight:900;}
+  .af-auto{border:1px solid var(--line);background:#fff;color:#3E86C0;font-size:11px;font-weight:800;padding:5px 12px;border-radius:20px;cursor:pointer;font-family:inherit;}
+  .af-auto.active{background:linear-gradient(135deg,#a3daff,#cff0da);color:var(--ink);border-color:transparent;}
+  .af-submit:disabled{opacity:.45;cursor:not-allowed;box-shadow:none;filter:grayscale(.15);}
+  .af-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 12px;}
+  .af-zoomgrp{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 2px 6px rgba(90,120,130,.1);}
+  .af-zbtn{width:36px;height:32px;border:none;background:#fff;color:#3E86C0;font-size:18px;font-weight:900;cursor:pointer;font-family:inherit;line-height:1;display:flex;align-items:center;justify-content:center;}
+  .af-zbtn:hover{background:#eef6fc;}
+  .af-zbtn+.af-zbtn{border-left:1px solid var(--line);}
+  .af-toolsr{display:flex;gap:8px;}
+  .af-tools .af-slider{-webkit-appearance:none;appearance:none;flex:1;height:8px;border-radius:8px;background:linear-gradient(90deg,#a3daff,#cff0da);outline:none;cursor:pointer;}
+  .af-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid #6FB7EC;box-shadow:0 2px 6px rgba(90,120,130,.35);cursor:grab;}
+  .af-slider::-webkit-slider-thumb:active{cursor:grabbing;transform:scale(1.05);}
+  .af-slider::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid #6FB7EC;box-shadow:0 2px 6px rgba(90,120,130,.35);cursor:grab;}
+  .af-slider::-moz-range-track{height:8px;border-radius:8px;background:linear-gradient(90deg,#a3daff,#cff0da);}
 </style>
 </head>
 <body>
@@ -717,21 +740,23 @@
     </div>
     <div class="mb-addform" id="mbAddForm" hidden>
       <div class="af-row">
-        <span class="af-label">誰要買</span>
+        <span class="af-label">誰要買 <span class="req">*</span></span>
         <button class="af-own" data-own="Cathy">Cathy</button>
         <button class="af-own" data-own="Kiki">Kiki</button>
         <button class="af-own" data-own="Pan">Pan</button>
       </div>
-      <label class="af-drop" id="afDrop">
+      <div class="af-drop" id="afDrop">
         <input type="file" accept="image/*" id="afFile" hidden>
-        <div class="af-drop-inner" id="afDropInner">＋ 點此上傳圖片</div>
-        <img id="afPreview" alt="" style="display:none">
-      </label>
+        <button type="button" class="af-drop-inner" id="afDropInner">＋ 點此上傳圖片</button>
+      </div>
+      <div class="af-crop" id="afCrop" style="display:none"><img id="afImg" alt="" draggable="false"></div>
+      <div class="af-hint" id="afHint" style="display:none">拖曳移動、拉滑桿縮放，把商品填滿方框</div>
+      <div class="af-tools" id="afZoomRow" style="display:none"><input type="range" class="af-slider" id="afZoom" min="1" max="4" step="0.01" value="1"><button type="button" class="af-repick" id="afRepick">重選</button></div>
       <input type="text" class="af-input" id="afTitle" placeholder="品項標題（例：ANUA 積雪草精華）" maxlength="40">
       <textarea class="af-input af-textarea" id="afDesc" placeholder="內容說明（例：舒緩鎮定，適合敏感肌）" maxlength="120"></textarea>
       <div class="af-actions">
         <button class="af-cancel" id="afCancel">取消</button>
-        <button class="af-submit" id="afSubmit">新增到清單</button>
+        <button class="af-submit" id="afSubmit" disabled>新增到清單</button>
       </div>
     </div>
     <div class="mb-list">
@@ -1043,16 +1068,34 @@
       var titleI=document.getElementById('afTitle'),descI=document.getElementById('afDesc');
       var submitB=document.getElementById('afSubmit'),cancelB=document.getElementById('afCancel');
       var imgData=null;
-      function resetForm(){imgData=null;preview.style.display='none';preview.removeAttribute('src');dropInner.style.display='block';titleI.value='';descI.value='';fileInput.value='';form.querySelectorAll('.af-own').forEach(function(o){o.classList.remove('active');});}
+      var afDrop=document.getElementById('afDrop'),afCrop=document.getElementById('afCrop'),afImg=document.getElementById('afImg'),afZoom=document.getElementById('afZoom'),afRepick=document.getElementById('afRepick'),afZoomRow=document.getElementById('afZoomRow'),afHint=document.getElementById('afHint');var afAuto=document.getElementById('afAuto');var useAuto=false,autoData=null;
+      var cropImg=null,baseScale=1,tx=0,ty=0,V=240,dragging=false,lastX=0,lastY=0;
+      function clampPos(){var z=+afZoom.value,iw=cropImg.naturalWidth*baseScale*z,ih=cropImg.naturalHeight*baseScale*z;if(tx>0)tx=0;if(ty>0)ty=0;if(tx<V-iw)tx=V-iw;if(ty<V-ih)ty=V-ih;}
+      function renderCrop(){if(!cropImg)return;var z=+afZoom.value,iw=cropImg.naturalWidth*baseScale*z,ih=cropImg.naturalHeight*baseScale*z;clampPos();afImg.style.width=iw+'px';afImg.style.height=ih+'px';afImg.style.left=tx+'px';afImg.style.top=ty+'px';}
+      function showCropper(){afDrop.style.display='none';afCrop.style.display='block';afZoomRow.style.display='flex';afHint.style.display='block';}
+      function hideCropper(){afCrop.style.display='none';afZoomRow.style.display='none';afHint.style.display='none';afDrop.style.display='';cropImg=null;imgData=null;fileInput.value='';}
+      function loadFile(fl){var img=new Image();img.onload=function(){cropImg=img;V=afCrop.clientWidth||240;baseScale=Math.max(V/img.naturalWidth,V/img.naturalHeight);afZoom.value='1';afImg.src=img.src;var iw=img.naturalWidth*baseScale,ih=img.naturalHeight*baseScale;tx=(V-iw)/2;ty=(V-ih)/2;showCropper();V=afCrop.clientWidth||V;baseScale=Math.max(V/img.naturalWidth,V/img.naturalHeight);iw=img.naturalWidth*baseScale;ih=img.naturalHeight*baseScale;tx=(V-iw)/2;ty=(V-ih)/2;renderCrop();useAuto=false;if(afAuto)afAuto.classList.remove('active');updateValid();};img.src=URL.createObjectURL(fl);}
+      function getCropData(){var OUT=480,c=document.createElement('canvas');c.width=OUT;c.height=OUT;var ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,OUT,OUT);var z=+afZoom.value,ds=baseScale*z,sx=(-tx)/ds,sy=(-ty)/ds,sw=V/ds,sh=V/ds;ctx.drawImage(cropImg,sx,sy,sw,sh,0,0,OUT,OUT);return c.toDataURL('image/jpeg',0.85);}
+      function centerCrop(img){var size=Math.min(img.naturalWidth,img.naturalHeight),sx=(img.naturalWidth-size)/2,sy=(img.naturalHeight-size)/2,OUT=480;var c=document.createElement('canvas');c.width=OUT;c.height=OUT;var ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,OUT,OUT);ctx.drawImage(img,sx,sy,size,size,0,0,OUT,OUT);return c.toDataURL('image/jpeg',0.85);}
+      function cutoutSquare(img){var iw0=img.naturalWidth,ih0=img.naturalHeight;var mx=Math.min(1,900/Math.max(iw0,ih0));var w=Math.max(1,Math.round(iw0*mx)),h=Math.max(1,Math.round(ih0*mx));var wc=document.createElement('canvas');wc.width=w;wc.height=h;var wx=wc.getContext('2d');wx.drawImage(img,0,0,w,h);var id;try{id=wx.getImageData(0,0,w,h);}catch(e){return centerCrop(img);}var data=id.data;function corner(x,y){var i=(y*w+x)*4;return [data[i],data[i+1],data[i+2]];}var cs=[corner(0,0),corner(w-1,0),corner(0,h-1),corner(w-1,h-1)];var bg=[0,0,0];cs.forEach(function(c){bg[0]+=c[0];bg[1]+=c[1];bg[2]+=c[2];});bg[0]/=4;bg[1]/=4;bg[2]/=4;var t2=62*62;var vis=new Uint8Array(w*h),st=[],x,y;for(x=0;x<w;x++){st.push(x);st.push((h-1)*w+x);}for(y=0;y<h;y++){st.push(y*w);st.push(y*w+w-1);}while(st.length){var idx=st.pop();if(vis[idx])continue;var i4=idx*4;var dr=data[i4]-bg[0],dg=data[i4+1]-bg[1],db=data[i4+2]-bg[2];if(dr*dr+dg*dg+db*db>t2)continue;vis[idx]=1;data[i4+3]=0;var cx=idx%w,cy=(idx-cx)/w;if(cx+1<w)st.push(idx+1);if(cx-1>=0)st.push(idx-1);if(cy+1<h)st.push(idx+w);if(cy-1>=0)st.push(idx-w);}wx.putImageData(id,0,0);var minX=w,minY=h,maxX=-1,maxY=-1;for(y=0;y<h;y++)for(x=0;x<w;x++){if(data[(y*w+x)*4+3]>16){if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}}if(maxX<0){minX=0;minY=0;maxX=w-1;maxY=h-1;}var bw=maxX-minX+1,bh=maxY-minY+1;var OUT=480,pad=1.0;var oc=document.createElement('canvas');oc.width=OUT;oc.height=OUT;var ox=oc.getContext('2d');ox.fillStyle='#fff';ox.fillRect(0,0,OUT,OUT);var sc=Math.min(OUT*pad/bw,OUT*pad/bh);var dw=bw*sc,dh=bh*sc;ox.drawImage(wc,minX,minY,bw,bh,(OUT-dw)/2,(OUT-dh)/2,dw,dh);return oc.toDataURL('image/jpeg',0.85);}
+      function revertManual(){if(!useAuto)return;useAuto=false;if(afAuto)afAuto.classList.remove('active');afImg.src=cropImg.src;V=afCrop.clientWidth||V;baseScale=Math.max(V/cropImg.naturalWidth,V/cropImg.naturalHeight);var iw=cropImg.naturalWidth*baseScale,ih=cropImg.naturalHeight*baseScale;tx=(V-iw)/2;ty=(V-ih)/2;renderCrop();}
+      function isReady(){return form.querySelectorAll('.af-own.active').length>0 && !!cropImg && titleI.value.trim().length>0 && descI.value.trim().length>0;}
+      function updateValid(){if(submitB)submitB.disabled=!isReady();}
+      function resetForm(){imgData=null;useAuto=false;autoData=null;hideCropper();titleI.value='';descI.value='';fileInput.value='';form.querySelectorAll('.af-own').forEach(function(o){o.classList.remove('active');});updateValid();}
       function openForm(){resetForm();var a2=overlay.querySelector('.fbtn.active');var fil=a2?a2.getAttribute('data-filter'):'all';if(fil!=='all'){var o=form.querySelector('.af-own[data-own="'+fil+'"]');if(o)o.classList.add('active');}form.hidden=false;}
       function closeForm(){form.hidden=true;}
       addBtn.addEventListener('click',function(e){e.stopPropagation();form.hidden?openForm():closeForm();});
       cancelB.addEventListener('click',closeForm);
-      form.querySelectorAll('.af-own').forEach(function(o){o.addEventListener('click',function(){o.classList.toggle('active');});});
-      function centerCrop(img){var size=Math.min(img.width,img.height),sx=(img.width-size)/2,sy=(img.height-size)/2,OUT=480;var c=document.createElement('canvas');c.width=OUT;c.height=OUT;var ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,OUT,OUT);ctx.drawImage(img,sx,sy,size,size,0,0,OUT,OUT);return c.toDataURL('image/jpeg',0.85);}
-      function cutoutSquare(img){var mx=Math.min(1,900/Math.max(img.width,img.height));var w=Math.max(1,Math.round(img.width*mx)),h=Math.max(1,Math.round(img.height*mx));var wc=document.createElement('canvas');wc.width=w;wc.height=h;var wx=wc.getContext('2d');wx.drawImage(img,0,0,w,h);var id;try{id=wx.getImageData(0,0,w,h);}catch(e){return centerCrop(img);}var data=id.data;function corner(x,y){var i=(y*w+x)*4;return [data[i],data[i+1],data[i+2]];}var cs=[corner(0,0),corner(w-1,0),corner(0,h-1),corner(w-1,h-1)];var bg=[0,0,0];cs.forEach(function(c){bg[0]+=c[0];bg[1]+=c[1];bg[2]+=c[2];});bg[0]/=4;bg[1]/=4;bg[2]/=4;var t2=62*62;var vis=new Uint8Array(w*h),st=[],x,y;for(x=0;x<w;x++){st.push(x);st.push((h-1)*w+x);}for(y=0;y<h;y++){st.push(y*w);st.push(y*w+w-1);}while(st.length){var idx=st.pop();if(vis[idx])continue;var i4=idx*4;var dr=data[i4]-bg[0],dg=data[i4+1]-bg[1],db=data[i4+2]-bg[2];if(dr*dr+dg*dg+db*db>t2)continue;vis[idx]=1;data[i4+3]=0;var cx=idx%w,cy=(idx-cx)/w;if(cx+1<w)st.push(idx+1);if(cx-1>=0)st.push(idx-1);if(cy+1<h)st.push(idx+w);if(cy-1>=0)st.push(idx-w);}wx.putImageData(id,0,0);var minX=w,minY=h,maxX=-1,maxY=-1;for(y=0;y<h;y++)for(x=0;x<w;x++){if(data[(y*w+x)*4+3]>16){if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}}if(maxX<0){minX=0;minY=0;maxX=w-1;maxY=h-1;}var bw=maxX-minX+1,bh=maxY-minY+1;var OUT=480,pad=1.0;var oc=document.createElement('canvas');oc.width=OUT;oc.height=OUT;var ox=oc.getContext('2d');ox.fillStyle='#fff';ox.fillRect(0,0,OUT,OUT);var sc=Math.min(OUT*pad/bw,OUT*pad/bh);var dw=bw*sc,dh=bh*sc;ox.drawImage(wc,minX,minY,bw,bh,(OUT-dw)/2,(OUT-dh)/2,dw,dh);return oc.toDataURL('image/jpeg',0.85);}
-      fileInput.addEventListener('change',function(){var fl=fileInput.files&&fileInput.files[0];if(!fl)return;var img=new Image();img.onload=function(){try{imgData=cutoutSquare(img);}catch(e){imgData=centerCrop(img);}preview.src=imgData;preview.style.display='block';dropInner.style.display='none';URL.revokeObjectURL(img.src);};img.src=URL.createObjectURL(fl);});
-      submitB.addEventListener('click',function(){var owners=[];form.querySelectorAll('.af-own.active').forEach(function(o){owners.push(o.getAttribute('data-own'));});var title=titleI.value.trim(),desc=descI.value.trim();if(!owners.length){toast('請先選擇誰要買');return;}if(!imgData){toast('請先上傳圖片');return;}if(!title){toast('請輸入品項標題');return;}sortOwners(owners);backend.write('c'+Date.now(),{kind:'custom',owners:owners.join(' '),title:title,desc:desc,img:imgData});closeForm();toast('已新增到清單');});
+      form.querySelectorAll('.af-own').forEach(function(o){o.addEventListener('click',function(){o.classList.toggle('active');updateValid();});});
+      if(dropInner)dropInner.addEventListener('click',function(e){e.stopPropagation();fileInput.click();});
+      if(afRepick)afRepick.addEventListener('click',function(e){e.stopPropagation();hideCropper();updateValid();fileInput.click();});
+      if(afZoom)afZoom.addEventListener('input',function(){renderCrop();});if(afCrop)afCrop.addEventListener('wheel',function(e){if(!cropImg)return;e.preventDefault();var v=Math.max(1,Math.min(4,(+afZoom.value)+(e.deltaY<0?0.15:-0.15)));afZoom.value=v;renderCrop();},{passive:false});
+      function pDown(e){if(!cropImg)return;if(useAuto)revertManual();dragging=true;var p=e.touches?e.touches[0]:e;lastX=p.clientX;lastY=p.clientY;}
+      function pMove(e){if(!dragging||!cropImg)return;var p=e.touches?e.touches[0]:e;tx+=p.clientX-lastX;ty+=p.clientY-lastY;lastX=p.clientX;lastY=p.clientY;renderCrop();if(e.cancelable)e.preventDefault();}
+      function pUp(){dragging=false;}
+      if(afCrop){afCrop.addEventListener('mousedown',pDown);window.addEventListener('mousemove',pMove);window.addEventListener('mouseup',pUp);afCrop.addEventListener('touchstart',pDown,{passive:true});afCrop.addEventListener('touchmove',pMove,{passive:false});afCrop.addEventListener('touchend',pUp);}
+      fileInput.addEventListener('change',function(){var fl=fileInput.files&&fileInput.files[0];if(!fl)return;loadFile(fl);});
+      submitB.addEventListener('click',function(){if(!isReady()){toast('請完成所有欄位');return;}var owners=[];form.querySelectorAll('.af-own.active').forEach(function(o){owners.push(o.getAttribute('data-own'));});var title=titleI.value.trim(),desc=descI.value.trim();imgData=useAuto?autoData:getCropData();sortOwners(owners);backend.write('c'+Date.now(),{kind:'custom',owners:owners.join(' '),title:title,desc:desc,img:imgData});closeForm();toast('已新增到清單');});titleI.addEventListener('input',updateValid);descI.addEventListener('input',updateValid);updateValid();
     }
     return {setBackend:setBackend};
   })();
