@@ -296,6 +296,44 @@
   .rmic:has(use[href="#ic-bag"]),.rmic:has(use[href="#ic-sun"]),.rmic:has(use[href="#ic-med"]){background:linear-gradient(135deg,#7fd0ab,#46a487);}
   .rmrow:has(use[href="#ic-food"]) .rmdot{border-color:#E6A874;}
   .rmrow:has(use[href="#ic-bag"]) .rmdot,.rmrow:has(use[href="#ic-sun"]) .rmdot,.rmrow:has(use[href="#ic-med"]) .rmdot{border-color:#46a487;}
+
+  /* 聖水洞想逛品牌（分頁互動）彈窗 */
+  #ss-overlay{position:fixed;inset:0;z-index:120;display:none;align-items:flex-end;justify-content:center;background:rgba(44,30,20,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);}
+  #ss-overlay.show{display:flex;}
+  .ss-tabs{display:flex;gap:8px;margin:2px 0 14px;}
+  .ss-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:9px 4px;border-radius:14px;border:1px solid var(--line);background:#fff;cursor:pointer;font-family:inherit;font-size:11px;font-weight:700;color:#63706b;transition:all .18s;}
+  .ss-tab .ss-tab-l{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;background:#eef2f0;color:#63706b;transition:all .18s;}
+  .ss-tab.active{color:#fff;border-color:transparent;box-shadow:0 4px 10px rgba(90,120,130,.22);}
+  .ss-tab.active .ss-tab-l{background:rgba(255,255,255,.32);color:#fff;}
+  .ss-tab[data-seg="A"].active{background:linear-gradient(135deg,#8fcdf3,#6FB7EC);}
+  .ss-tab[data-seg="B"].active{background:linear-gradient(135deg,#f0a3a3,#d47f7f);}
+  .ss-tab[data-seg="C"].active{background:linear-gradient(135deg,#7fd0ab,#46a487);}
+  .ss-panel{display:none;}
+  .ss-panel.active{display:block;animation:ssFade .28s ease;}
+  @keyframes ssFade{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:none;}}
+  .ss-seghead{padding:11px 15px;border-radius:15px;margin-bottom:12px;color:#fff;box-shadow:0 4px 12px rgba(90,120,130,.18);}
+  .ss-panel[data-seg="A"] .ss-seghead{background:linear-gradient(135deg,#8fcdf3,#6FB7EC);}
+  .ss-panel[data-seg="B"] .ss-seghead{background:linear-gradient(135deg,#f0a3a3,#d47f7f);}
+  .ss-panel[data-seg="C"] .ss-seghead{background:linear-gradient(135deg,#7fd0ab,#46a487);}
+  .ss-segt{font-size:15px;font-weight:900;letter-spacing:.3px;}
+  .ss-segd{font-size:11.5px;opacity:.92;margin-top:2px;}
+  .ss-shops{display:flex;flex-direction:column;gap:10px;}
+  .ss-shop{display:flex;gap:11px;align-items:flex-start;padding:11px 12px;border-radius:14px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7);box-shadow:0 3px 10px rgba(90,120,130,.08);transition:transform .15s,box-shadow .15s;}
+  .ss-shop:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(90,120,130,.16);}
+  .ss-num{flex:0 0 26px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:900;color:#fff;margin-top:1px;box-shadow:0 2px 5px rgba(90,120,130,.22);}
+  .ss-panel[data-seg="A"] .ss-num{background:#6FB7EC;}
+  .ss-panel[data-seg="B"] .ss-num{background:#d47f7f;}
+  .ss-panel[data-seg="C"] .ss-num{background:#46a487;}
+  .ss-info{flex:1;min-width:0;}
+  .ss-name{font-size:13.5px;font-weight:800;color:var(--ink);line-height:1.35;}
+  .ss-name.hot::after{content:"🔥 必逛";font-size:9.5px;font-weight:800;color:#c96a6a;margin-left:7px;background:#fdeaea;padding:2px 8px;border-radius:20px;white-space:nowrap;}
+  .ss-desc{font-size:11.5px;color:#63706b;margin-top:4px;line-height:1.55;}
+  .ss-next{margin-top:14px;width:100%;padding:12px;border:none;border-radius:14px;font-family:inherit;font-size:13.5px;font-weight:800;color:var(--ink);cursor:pointer;background:linear-gradient(135deg,#a3daff,#cff0da);box-shadow:0 5px 14px rgba(120,140,150,.28);transition:transform .12s,box-shadow .12s;}
+  .ss-next:hover{box-shadow:0 7px 18px rgba(120,140,150,.36);}
+  .ss-next:active{transform:scale(.98);}
+  .ss-end{margin-top:14px;text-align:center;font-size:12.5px;font-weight:800;color:#2f7a55;background:#e7f2ea;border-radius:14px;padding:13px;line-height:1.5;}
+  .eat{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#E6A874;vertical-align:middle;margin-right:5px;flex:0 0 auto;box-shadow:0 1px 3px rgba(150,110,60,.3);}
+  .eat svg{width:11px;height:11px;fill:#fff;display:block;}
 </style>
 </head>
 <body>
@@ -566,9 +604,9 @@
   <div class="tl">
     <div class="item"><div class="tcol"><div class="tm">09:30</div><div class="lb">STAGE 0</div></div><div class="ncol"><div class="node med"><svg><use href="#ic-med"/></svg></div></div><div class="content"><div class="stop-c" data-map="강남 피부과 성형외과" data-label="江南醫美診所"><div class="goarrow">➤</div><div class="stop-title">江南醫美體驗</div><div class="stop-sub">09:30–12:00 · 建議預約 09:30 或 10:00 第一批，避開午峰</div><div class="stop-tag"><span class="ci tgi"><svg><use href="#ic-med"/></svg></span>皮膚管理 / 保濕 / 簡易雷射</div></div><div class="infobox"><div class="ih"><span class="ci hi"><svg><use href="#ic-med"/></svg></span>時程與醫美後防護</div><ul><li>預約 <b>09:30 或 10:00</b> 第一批諮詢；3 人基本皮膚管理約抓 <b>1.5–2 小時</b>。</li><li>做完皮膚管理後，先在診所擦好防曬、戴上帽子與墨鏡，準備出發！</li><li>診所若在新沙／論峴一帶可從飯店步行 5–10 分；江南站一帶則搭新盆唐線／3 號線 2–3 站。</li></ul></div></div></div>
     <div class="item"><div class="tcol"></div><div class="ncol"><div class="node mini"><svg><use href="#ic-train"/></svg></div></div><div class="content"><div class="transit"><div class="transit-head" onclick="this.parentElement.classList.toggle('open')"><span class="ci thi"><svg><use href="#ic-train"/></svg></span>約 20 分 · 江南／新沙 → 建大入口 <span class="caret">›</span></div><div class="routes"><div class="route sel"><div class="route-top"><div class="route-time">約 20 分鐘 <small>約 1,500 KRW／人</small></div><div class="check"></div></div><div class="segs"><span class="seg l3">新沙 3號線 4站→乙支路三街</span><span class="seg walk">站內轉乘</span><span class="seg l2">2號線 往聖水／建大 7站→建大入口</span></div></div></div><div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">建大入口站往【6 號出口】出站；距離約 11.5km（超基本里程一點點），車資 1,400+100=1,500。</div></div></div></div>
-    <div class="item"><div class="tcol"><div class="tm">12:30</div><div class="lb">STAGE 1</div></div><div class="ncol"><div class="node"><svg><use href="#ic-food"/></svg></div></div><div class="content"><div class="stop-c" data-map="건대입구역" data-label="建大入口站"><div class="goarrow">➤</div><div class="stop-title">建大 6 號出口 · 即刻開吃</div><div class="stop-sub">12:30–14:00 · 出站馬上吃 · 順向到聖水外帶下午茶</div><div class="stop-tag"><span class="ci tgi"><svg><use href="#ic-food"/></svg></span>刀削麵 · 外帶帶去漢江</div></div><div class="infobox"><div class="seg-h"><span class="ci"><svg><use href="#ic-food"/></svg></span>午餐首選（出站即食）</div><ul><li><b>朝朝刀削麵 조조칼국수 建大店</b>：建大入口站 <b>6 號出口</b> 步行只要 2–3 分！立刻爽吃鮮美蛤蜊刀削麵與酥脆海鮮煎餅。</li><li><b>備案</b>：想吃 魚餅黑店／能洞水芹菜／聖水豬蹄，沿大馬路往前步行約 8–10 分，或搭 2 號線 1 站到聖水站出站吃。</li></ul><div class="seg-h"><span class="ci"><svg><use href="#ic-bag"/></svg></span>順向步行至聖水區 · 外帶下午茶</div><ul><li>吃飽沿大馬路（聖水路）往西走（往聖水站方向），順路進聖水站南側巷弄打包：</li><li><b>meita wang 매타왕</b> XXXL 極巨型蛋撻 · <b>달임막 dalimbread</b> 小熊麵包 · <b>standard bread</b> 現烤法式吐司。</li></ul></div></div></div>
+    <div class="item"><div class="tcol"><div class="tm">12:30</div><div class="lb">STAGE 1</div></div><div class="ncol"><div class="node"><svg><use href="#ic-food"/></svg></div></div><div class="content"><div class="stop-c" data-map="건대입구역" data-label="建大入口站"><div class="goarrow">➤</div><div class="stop-title">建大 6 號出口 · 即刻開吃</div><div class="stop-sub">12:30–14:00 · 出站馬上吃 · 順向到聖水外帶下午茶</div><div class="stop-tag"><span class="ci tgi"><svg><use href="#ic-food"/></svg></span>刀削麵 · 外帶帶去漢江</div></div><div class="infobox"><div class="seg-h"><span class="ci"><svg><use href="#ic-food"/></svg></span>午餐首選（出站即食）</div><ul><li><span class="eat"><svg><use href="#ic-food"/></svg></span><b>朝朝刀削麵 조조칼국수 建大店</b>：建大入口站 <b>6 號出口</b> 步行只要 2–3 分！立刻爽吃鮮美蛤蜊刀削麵與酥脆海鮮煎餅。</li><li><span class="eat"><svg><use href="#ic-food"/></svg></span><b>魚餅黑店／能洞水芹菜／聖水豬蹄</b>：沿大馬路往前步行約 8–10 分，或搭 2 號線 1 站到聖水站出站吃。</li></ul><div class="seg-h"><span class="ci"><svg><use href="#ic-bag"/></svg></span>順向步行至聖水區 · 外帶下午茶</div><ul><li>吃飽沿大馬路（聖水路）往西走（往聖水站方向），順路進聖水站南側巷弄打包：</li><li><b>meita wang 매타왕</b> XXXL 極巨型蛋撻 · <b>달임막 dalimbread</b> 小熊麵包 · <b>standard bread</b> 現烤法式吐司。</li></ul></div></div></div>
     <div class="item"><div class="tcol"></div><div class="ncol"><div class="node mini"><svg><use href="#ic-walk"/></svg></div></div><div class="content"><div class="transit"><div class="transit-head" onclick="this.parentElement.classList.toggle('open')"><span class="ci thi"><svg><use href="#ic-walk"/></svg></span>血拼動線 · 由東向西（建大／聖水 → 纛島站）<span class="caret">›</span></div><div class="routes"><div class="route sel"><div class="route-top"><div class="route-time">手提點心順向逛 <small>不走回頭路</small></div><div class="check"></div></div><div class="segs"><span class="seg walk">A 聖水站東側</span><span class="seg walk">B 中段核心</span><span class="seg walk">C 纛島站西側</span></div></div></div></div></div></div>
-    <div class="item"><div class="tcol"><div class="tm">14:00</div><div class="lb">STAGE 2</div></div><div class="ncol"><div class="node"><svg><use href="#ic-bag"/></svg></div></div><div class="content"><div class="stop-c" data-map="성수동 연무장길" data-label="聖水洞 演武場街"><div class="goarrow">➤</div><div class="stop-title">聖水洞 · 順向爆買街</div><div class="stop-sub">14:00–18:00 · 由東向西 聖水站 → 纛島站，一路順逛</div><div class="stop-tag"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span>20 家精選品牌一路順逛</div></div><div class="infobox"><div class="seg-h"><span class="ci"><svg><use href="#ic-pin"/></svg></span>區段 A · 聖水站東側（鞋包·平價·飾品海）</div><ul><li><b>nyu·nyu 聖水店</b>：一開始就先衝飾品海，耳環、包包帽子買起來。</li><li><b>SWEE</b>：潮流美妝與化妝品選品，就在飾品店附近。</li><li><b>Khiho / Chaakan Shoes 착한구두</b>：先看高質感手工鞋，再掃台幣幾百元超平價女鞋。</li><li><b>Musinsa Standard / Musinsa Kicks</b>：韓國極簡版 UNIQLO 基本款 + 當季限量潮流球鞋。</li><li><b>maman Gelato</b>：逛完腿酸就停下吃杯迪拜巧克力冰淇淋補血糖！</li></ul><div class="seg-h"><span class="ci"><svg><use href="#ic-pin"/></svg></span>區段 B · 演武場街核心中段（潮流大牌）</div><ul><li><b>Loe 로에</b>：質感韓系小眾香氛，買護手霜當伴手禮。</li><li><b>Pureda</b>：知性歐膩風熱門網拍實體店。</li><li><b>The Coldest Moment（TCM）</b>：美式潮流與塗鴉街頭服飾。</li><li><b>Stand Oil</b>：純素皮革平價高質感包，韓國女生人手一咖。</li><li><b>Rockfish Weatherwear</b>：必試法式芭蕾舞鞋、瑪莉珍鞋與雲朵包。</li><li><b>Matin Kim</b>：聖水最火大牌，必買 Logo 鐵牌皮夾與帥氣街頭服飾。</li><li><b>Rest & Recreation（R&R）</b>：韓星私服最愛，Logo 棉質運動風女裝與帽子。</li></ul><div class="seg-h"><span class="ci"><svg><use href="#ic-pin"/></svg></span>區段 C · 纛島站西側（街頭選品·極致辣妹）</div><ul><li><b>29cm SEONGSU</b>：高質感生活家居選品與潮流快閃。</li><li><b>Fogsy / Double Lovers</b>：高質感流行女裝與復古設計師墨鏡眼鏡。</li><li><b>Subdued</b>：個性美式街頭辣妹裝。</li><li><b>Hausnowhere</b>：Gentle Monster 旗下整棟超前衛概念空間（含 TAMBURINS 香氛）。</li><li><b class="hot">BADBLOOD 聖水旗艦店 배드블러드</b>：最著名美式辣妹工裝褲、修身運動服，在這裡買完剛好當逛街的完美句點！</li></ul></div></div></div>
+    <div class="item"><div class="tcol"><div class="tm">14:00</div><div class="lb">STAGE 2</div></div><div class="ncol"><div class="node"><svg><use href="#ic-bag"/></svg></div></div><div class="content"><div class="stop-c" data-map="성수동 연무장길" data-label="聖水洞 演武場街"><div class="goarrow">➤</div><div class="stop-title">聖水洞 · 順向爆買街</div><div class="stop-sub">14:00–18:00 · 由東向西 聖水站 → 纛島站，一路順逛</div><div class="stop-tag"><span class="ci tgi"><svg><use href="#ic-bag"/></svg></span>20 家精選品牌一路順逛</div></div><button class="mustbuy-btn" id="ssBtn"><span class="ci"><svg><use href="#ic-bag"/></svg></span>想逛品牌</button></div></div>
     <div class="item"><div class="tcol"></div><div class="ncol"><div class="node mini"><svg><use href="#ic-train"/></svg></div></div><div class="content"><div class="transit"><div class="transit-head" onclick="this.parentElement.classList.toggle('open')"><span class="ci thi"><svg><use href="#ic-train"/></svg></span>1–2 站 · 纛島 → 漢江公園 <span class="caret">›</span></div><div class="routes"><div class="route sel"><div class="route-top"><div class="route-time">1–2 站 <small>約 1,400 KRW／人</small></div><div class="check"></div></div><div class="segs"><span class="seg walk">逛到纛島站</span><span class="seg l7">7號線 往清潭</span><span class="seg walk">纛島遊園地站 2·3 出口即達</span></div></div></div><div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">出站一轉身就是漢江公園超大草皮與美麗江景，完全不用走遠！</div></div></div></div>
     <div class="item"><div class="tcol"><div class="tm">18:00</div><div class="lb">STAGE 3</div></div><div class="ncol"><div class="node sun"><svg><use href="#ic-sun"/></svg></div></div><div class="content"><div class="stop-c" data-map="뚝섬한강공원" data-label="纛島漢江公園"><div class="goarrow">➤</div><div class="stop-title">纛島漢江公園 · 日落野餐</div><div class="stop-sub">18:00–21:30 · 纛島遊園地站 2/3 出口，出站即達草皮江景</div><div class="stop-tag"><span class="ci tgi"><svg><use href="#ic-sun"/></svg></span>日落 · 炸雞 · 漢江泡麵</div></div><div class="infobox"><div class="ih"><span class="ci hi"><svg><use href="#ic-sun"/></svg></span>漢江深夜野生體驗</div><ul><li><b>炸雞＋自助泡麵</b>：在便利商店外送區訂橋村炸雞，並用超商自動煮麵機煮出完美泡麵。</li><li><b>吃下午茶看夜景</b>：拿出下午外帶的 standard bread 法吐、小熊麵包和 XXL 巨型蛋撻，吹漢江晚風看日落與江南對岸夜景。</li></ul></div></div></div>
     <div class="item"><div class="tcol"></div><div class="ncol"><div class="node mini"><svg><use href="#ic-train"/></svg></div></div><div class="content"><div class="transit"><div class="transit-head" onclick="this.parentElement.classList.toggle('open')"><span class="ci thi"><svg><use href="#ic-train"/></svg></span>約 20 分 · 纛島遊園地 → 新沙飯店 <span class="caret">›</span></div><div class="routes"><div class="route sel"><div class="route-top"><div class="route-time">7號→新盆唐線 <small>約 1,400 KRW／人</small></div><div class="check"></div></div><div class="segs"><span class="seg l7">7號線 往南過江 3站→論峴</span><span class="seg walk">站內轉乘</span><span class="seg lsb">新盆唐線 1站→新沙</span></div></div></div><div style="font-size:11px;color:var(--gray);margin-top:8px;padding-left:2px;">在論峴站沿紅色「新盆唐線」指標走；坐 1 站到終點新沙站，屬市區轉乘計費、不會被收跨線高額加價。</div></div></div></div>
@@ -786,6 +824,59 @@
   </div>
 </div>
 
+<div id="ss-overlay">
+  <div class="mb-sheet" role="dialog" aria-modal="true" aria-label="聖水洞想逛品牌">
+    <div class="mb-head">
+      <div class="mb-grip"></div>
+      <div class="mb-t"><span class="ci"><svg><use href="#ic-bag"/></svg></span>聖水洞 · 想逛品牌</div>
+      <button class="mb-x" id="ssClose" aria-label="關閉">×</button>
+    </div>
+    <div class="mb-sub">由東向西順逛：聖水站 → 纛島站，不走回頭路。點分頁切換三大區。</div>
+    <div class="ss-tabs">
+      <button class="ss-tab active" data-seg="A"><span class="ss-tab-l">A</span>聖水站東側</button>
+      <button class="ss-tab" data-seg="B"><span class="ss-tab-l">B</span>演武場街</button>
+      <button class="ss-tab" data-seg="C"><span class="ss-tab-l">C</span>纛島站西側</button>
+    </div>
+    <div class="ss-panels">
+      <div class="ss-panel active" data-seg="A">
+        <div class="ss-seghead"><div class="ss-segt">區段 A · 聖水站東側</div><div class="ss-segd">鞋包 · 平價 · 飾品海</div></div>
+        <div class="ss-shops">
+        <div class="ss-shop"><div class="ss-num">1</div><div class="ss-info"><div class="ss-name">nyu·nyu 聖水店</div><div class="ss-desc">一開始就先衝飾品海，耳環、包包帽子買起來。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">2</div><div class="ss-info"><div class="ss-name">FWEE</div><div class="ss-desc">潮流美妝與化妝品選品，就在飾品店附近。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">3</div><div class="ss-info"><div class="ss-name">Khiho / Chaakan Shoes 착한구두</div><div class="ss-desc">先看高質感手工鞋，再掃台幣幾百元超平價女鞋。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">4</div><div class="ss-info"><div class="ss-name">Musinsa Standard / Musinsa Kicks</div><div class="ss-desc">韓國極簡版 UNIQLO 基本款 + 當季限量潮流球鞋。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">5</div><div class="ss-info"><div class="ss-name"><span class="eat"><svg><use href="#ic-food"/></svg></span>maman Gelato</div><div class="ss-desc">逛完腿酸就停下吃杯迪拜巧克力冰淇淋補血糖！</div></div></div>
+        </div>
+        <button class="ss-next" data-next="B">下一區：演武場街 →</button>
+      </div>
+      <div class="ss-panel" data-seg="B">
+        <div class="ss-seghead"><div class="ss-segt">區段 B · 演武場街核心中段</div><div class="ss-segd">潮流大牌</div></div>
+        <div class="ss-shops">
+        <div class="ss-shop"><div class="ss-num">1</div><div class="ss-info"><div class="ss-name">Loe 로에</div><div class="ss-desc">質感韓系小眾香氛，買護手霜當伴手禮。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">2</div><div class="ss-info"><div class="ss-name">Pureda</div><div class="ss-desc">知性歐膩風熱門網拍實體店。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">3</div><div class="ss-info"><div class="ss-name">The Coldest Moment（TCM）</div><div class="ss-desc">美式潮流與塗鴉街頭服飾。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">4</div><div class="ss-info"><div class="ss-name">Stand Oil</div><div class="ss-desc">純素皮革平價高質感包，韓國女生人手一咖。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">5</div><div class="ss-info"><div class="ss-name">Rockfish Weatherwear</div><div class="ss-desc">必試法式芭蕾舞鞋、瑪莉珍鞋與雲朵包。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">6</div><div class="ss-info"><div class="ss-name">Matin Kim</div><div class="ss-desc">聖水最火大牌，必買 Logo 鐵牌皮夾與帥氣街頭服飾。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">7</div><div class="ss-info"><div class="ss-name">Rest & Recreation（R&R）</div><div class="ss-desc">韓星私服最愛，Logo 棉質運動風女裝與帽子。</div></div></div>
+        </div>
+        <button class="ss-next" data-next="C">下一區：纛島站西側 →</button>
+      </div>
+      <div class="ss-panel" data-seg="C">
+        <div class="ss-seghead"><div class="ss-segt">區段 C · 纛島站西側</div><div class="ss-segd">街頭選品 · 極致辣妹</div></div>
+        <div class="ss-shops">
+        <div class="ss-shop"><div class="ss-num">1</div><div class="ss-info"><div class="ss-name">29cm SEONGSU</div><div class="ss-desc">高質感生活家居選品與潮流快閃。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">2</div><div class="ss-info"><div class="ss-name">Fogsy / Double Lovers</div><div class="ss-desc">高質感流行女裝與復古設計師墨鏡眼鏡。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">3</div><div class="ss-info"><div class="ss-name">Subdued</div><div class="ss-desc">個性美式街頭辣妹裝。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">4</div><div class="ss-info"><div class="ss-name">Hausnowhere</div><div class="ss-desc">Gentle Monster 旗下整棟超前衛概念空間（含 TAMBURINS 香氛）。</div></div></div>
+        <div class="ss-shop"><div class="ss-num">5</div><div class="ss-info"><div class="ss-name">BADBLOOD 聖水旗艦店 배드블러드</div><div class="ss-desc">最著名美式辣妹工裝褲、修身運動服，在這裡買完剛好當逛街的完美句點！</div></div></div>
+        </div>
+        <div class="ss-end">🎉 逛完三區！往纛島遊園地站前進漢江公園野餐</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="toast"></div>
 
 <script>
@@ -833,6 +924,22 @@
   if(hnClose)hnClose.addEventListener('click',closeHn);
   if(hnOverlay)hnOverlay.addEventListener('click',function(e){if(e.target===hnOverlay)closeHn();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeHn();});
+  var ssOverlay=document.getElementById('ss-overlay');
+  var ssBtn=document.getElementById('ssBtn');
+  var ssClose=document.getElementById('ssClose');
+  function openSs(){ssOverlay.classList.add('show');document.body.style.overflow='hidden';}
+  function closeSs(){ssOverlay.classList.remove('show');document.body.style.overflow='';}
+  if(ssBtn)ssBtn.addEventListener('click',function(e){e.stopPropagation();openSs();});
+  if(ssClose)ssClose.addEventListener('click',closeSs);
+  if(ssOverlay)ssOverlay.addEventListener('click',function(e){if(e.target===ssOverlay)closeSs();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSs();});
+  function ssShow(seg){
+    document.querySelectorAll('#ss-overlay .ss-tab').forEach(function(t){t.classList.toggle('active',t.getAttribute('data-seg')===seg);});
+    document.querySelectorAll('#ss-overlay .ss-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-seg')===seg);});
+    var sh=document.querySelector('#ss-overlay .mb-sheet');if(sh)sh.scrollTop=0;
+  }
+  document.querySelectorAll('#ss-overlay .ss-tab').forEach(function(t){t.addEventListener('click',function(){ssShow(t.getAttribute('data-seg'));});});
+  document.querySelectorAll('#ss-overlay .ss-next').forEach(function(b){b.addEventListener('click',function(){ssShow(b.getAttribute('data-next'));});});
 </script>
 </body>
 </html>
