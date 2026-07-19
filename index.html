@@ -271,7 +271,7 @@
   .fbtn[data-filter="Kiki"].active{background:#84B1ED;}
   .fbtn[data-filter="Pan"].active{background:#F7AA99;}
   /* 卡片右下角購買人標籤 */
-  .mb-owners{position:absolute;right:12px;bottom:9px;display:flex;gap:5px;z-index:2;}
+  .mb-owners{position:absolute;right:12px;bottom:9px;display:flex;align-items:center;gap:5px;z-index:2;}
   .owner{font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;color:#fff;letter-spacing:.3px;box-shadow:0 2px 5px rgba(90,120,130,.18);}
   .owner.cathy{background:#67D5B5;}
   .owner.kiki{background:#84B1ED;}
@@ -334,6 +334,45 @@
   .ss-end{margin-top:14px;text-align:center;font-size:12.5px;font-weight:800;color:#2f7a55;background:#e7f2ea;border-radius:14px;padding:13px;line-height:1.5;}
   .eat{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#E6A874;vertical-align:middle;margin-right:5px;flex:0 0 auto;box-shadow:0 1px 3px rgba(150,110,60,.3);}
   .eat svg{width:11px;height:11px;fill:#fff;display:block;}
+  /* 自訂新增（＋）表單 */
+  .mb-add-btn{width:100%;margin:0 0 14px;padding:11px;border:1.5px dashed #b7ccd3;border-radius:14px;background:rgba(255,255,255,.4);color:#3E86C0;font-family:inherit;font-size:13.5px;font-weight:800;cursor:pointer;transition:all .15s;}
+  .mb-add-btn:hover{background:rgba(255,255,255,.72);border-color:#6FB7EC;}
+  .mb-addform{margin:0 0 14px;padding:14px;border-radius:16px;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.85);box-shadow:0 4px 14px rgba(90,120,130,.12);}
+  .af-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:11px;}
+  .af-label{font-size:11.5px;font-weight:800;color:var(--gray);margin-right:2px;}
+  .af-own{font-size:12px;font-weight:700;padding:6px 13px;border-radius:20px;border:1px solid var(--line);background:#fff;color:#63706b;cursor:pointer;font-family:inherit;transition:all .15s;}
+  .af-own.active{color:#fff;border-color:transparent;box-shadow:0 3px 8px rgba(90,120,130,.2);}
+  .af-own[data-own="Cathy"].active{background:#67D5B5;}
+  .af-own[data-own="Kiki"].active{background:#84B1ED;}
+  .af-own[data-own="Pan"].active{background:#F7AA99;}
+  .af-drop{display:flex;align-items:center;justify-content:center;width:100%;min-height:120px;border-radius:14px;border:1.5px dashed #b7ccd3;background:rgba(255,255,255,.5);cursor:pointer;overflow:hidden;margin-bottom:11px;}
+  .af-drop-inner{text-align:center;font-size:12.5px;font-weight:700;color:#6d8a99;line-height:1.7;}
+  .af-drop-inner small{font-size:10.5px;font-weight:600;color:var(--gray);}
+  .af-drop img{width:128px;height:128px;object-fit:cover;border-radius:12px;}
+  .af-input{width:100%;box-sizing:border-box;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:#fff;font-family:inherit;font-size:13px;color:var(--ink);margin-bottom:10px;}
+  .af-input:focus{outline:none;border-color:#6FB7EC;box-shadow:0 0 0 3px rgba(111,183,236,.18);}
+  .af-textarea{resize:vertical;min-height:56px;line-height:1.5;}
+  .af-actions{display:flex;gap:9px;}
+  .af-cancel,.af-submit{flex:1;padding:11px;border:none;border-radius:13px;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;}
+  .af-cancel{background:#eef2f0;color:#63706b;}
+  .af-submit{background:linear-gradient(135deg,#a3daff,#cff0da);color:var(--ink);box-shadow:0 4px 12px rgba(120,140,150,.28);}
+  .mb-pic.gc .ph{background:linear-gradient(135deg,#b8c9d6,#8fa3b3);}
+  .mb-tagedit{width:20px;height:20px;border-radius:50%;border:1px dashed #9dc8e8;background:rgba(255,255,255,.85);color:#3E86C0;font-size:12px;font-weight:900;line-height:1;cursor:pointer;padding:0;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;}
+  .mb-tagmenu{position:absolute;right:10px;bottom:36px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 20px rgba(90,120,130,.28);padding:7px;display:flex;gap:6px;z-index:6;}
+  .mb-tagopt{font-size:11px;font-weight:800;padding:5px 10px;border-radius:20px;border:1px solid var(--line);background:#fff;color:#63706b;cursor:pointer;font-family:inherit;opacity:.5;transition:all .12s;}
+  .mb-tagopt.active{opacity:1;color:#fff;border-color:transparent;}
+  .mb-tagopt.cathy.active{background:#67D5B5;}
+  .mb-tagopt.kiki.active{background:#84B1ED;}
+  .mb-tagopt.pan.active{background:#F7AA99;}
+  .mb-head-actions{display:flex;align-items:center;gap:8px;}
+  .mb-headadd{width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,255,255,.3);color:var(--ink);font-size:21px;font-weight:900;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;padding:0;}
+  .mb-headadd:hover{background:rgba(255,255,255,.55);}
+  .mb-del{position:absolute;top:9px;right:11px;width:22px;height:22px;border-radius:50%;border:none;background:rgba(212,127,127,.16);color:#c85a5a;font-size:15px;font-weight:800;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:3;font-family:inherit;padding:0;}
+  .mb-del:hover{background:#d47f7f;color:#fff;}
+  .mb-card .mb-name{padding-right:22px;}
+  .mb-removed{display:none!important;}
+  .mb-add-inline{margin-left:auto;font-size:12px;font-weight:800;padding:7px 14px;border-radius:20px;border:none;cursor:pointer;font-family:inherit;color:var(--ink);background:linear-gradient(135deg,#a3daff,#cff0da);box-shadow:0 3px 8px rgba(120,140,150,.28);transition:box-shadow .15s;}
+  .mb-add-inline:hover{box-shadow:0 5px 13px rgba(120,140,150,.38);}
 </style>
 </head>
 <body>
@@ -666,6 +705,26 @@
       <button class="fbtn" data-filter="Cathy">Cathy</button>
       <button class="fbtn" data-filter="Kiki">Kiki</button>
       <button class="fbtn" data-filter="Pan">Pan</button>
+      <button class="mb-add-inline" id="mbAddBtn" type="button">＋ 新增商品</button>
+    </div>
+    <div class="mb-addform" id="mbAddForm" hidden>
+      <div class="af-row">
+        <span class="af-label">誰要買</span>
+        <button class="af-own" data-own="Cathy">Cathy</button>
+        <button class="af-own" data-own="Kiki">Kiki</button>
+        <button class="af-own" data-own="Pan">Pan</button>
+      </div>
+      <label class="af-drop" id="afDrop">
+        <input type="file" accept="image/*" id="afFile" hidden>
+        <div class="af-drop-inner" id="afDropInner">＋ 點此上傳圖片</div>
+        <img id="afPreview" alt="" style="display:none">
+      </label>
+      <input type="text" class="af-input" id="afTitle" placeholder="品項標題（例：ANUA 積雪草精華）" maxlength="40">
+      <textarea class="af-input af-textarea" id="afDesc" placeholder="內容說明（例：舒緩鎮定，適合敏感肌）" maxlength="120"></textarea>
+      <div class="af-actions">
+        <button class="af-cancel" id="afCancel">取消</button>
+        <button class="af-submit" id="afSubmit">新增到清單</button>
+      </div>
     </div>
     <div class="mb-list">
 
@@ -905,16 +964,8 @@
   if(mbClose)mbClose.addEventListener('click',closeMustbuy);
   if(mbOverlay)mbOverlay.addEventListener('click',function(e){if(e.target===mbOverlay)closeMustbuy();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMustbuy();});
-  document.querySelectorAll('.fbtn').forEach(function(b){b.addEventListener('click',function(){
-    document.querySelectorAll('.fbtn').forEach(function(x){x.classList.remove('active');});
-    b.classList.add('active');
-    var fil=b.getAttribute('data-filter');
-    document.querySelectorAll('#mb-overlay .mb-card').forEach(function(card){
-      var ow=(card.getAttribute('data-owners')||'').split(' ');
-      card.style.display=(fil==='all'||ow.indexOf(fil)>=0)?'':'none';
-    });
-    document.querySelectorAll('#mb-overlay .mb-owners').forEach(function(o){o.style.display=(fil==='all')?'':'none';});
-  });});
+  document.querySelectorAll('.fbtn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.fbtn').forEach(function(x){x.classList.remove('active');});b.classList.add('active');mbApplyFilter();});});
+  function mbApplyFilter(){var a=document.querySelector('#mb-overlay .fbtn.active');var fil=a?a.getAttribute('data-filter'):'all';document.querySelectorAll('#mb-overlay .mb-card').forEach(function(card){if(card.classList.contains('mb-removed')){card.style.display='none';return;}var ow=(card.getAttribute('data-owners')||'').split(' ');card.style.display=(fil==='all'||ow.indexOf(fil)>=0)?'':'none';});document.querySelectorAll('#mb-overlay .mb-owners').forEach(function(o){o.style.display=(fil==='all')?'':'none';});document.querySelectorAll('#mb-overlay .mb-del').forEach(function(d){d.style.display=(fil==='all')?'flex':'none';});}
   var hnOverlay=document.getElementById('hn-overlay');
   var brandBtn=document.getElementById('brandBtn');
   var hnClose=document.getElementById('hnClose');
@@ -940,6 +991,95 @@
   }
   document.querySelectorAll('#ss-overlay .ss-tab').forEach(function(t){t.addEventListener('click',function(){ssShow(t.getAttribute('data-seg'));});});
   document.querySelectorAll('#ss-overlay .ss-next').forEach(function(b){b.addEventListener('click',function(){ssShow(b.getAttribute('data-next'));});});
+  // 彩妝必買：雲端同步(Firestore)/本機儲存 + 新增 + 刪除 + 標籤
+  window.MB=(function(){
+    var overlay=document.getElementById('mb-overlay');if(!overlay)return{};
+    var list=overlay.querySelector('.mb-list');
+    var ORDER=['Cathy','Kiki','Pan'];
+    var defaults={},lastItems={},backend=null;
+    function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+    function selId(id){return list.querySelector('.mb-card[data-id="'+(window.CSS&&CSS.escape?CSS.escape(id):id)+'"]');}
+    function origCards(){return Array.prototype.filter.call(list.querySelectorAll('.mb-card'),function(c){return c.dataset.custom!=='1';});}
+    list.querySelectorAll('.mb-card').forEach(function(card){if(!card.dataset.id){var pic=card.querySelector('.mb-pic'),g='';if(pic){pic.classList.forEach(function(c){if(/^g\d+$/.test(c))g=c;});}card.dataset.id=g||('o'+Math.random().toString(36).slice(2,7));}defaults[card.dataset.id]=card.dataset.owners||'';});
+    function closeMenu(){var m=overlay.querySelector('.mb-tagmenu');if(m)m.remove();}
+    function sortOwners(o){o.sort(function(x,y){return ORDER.indexOf(x)-ORDER.indexOf(y);});return o;}
+    function toggleOwner(card,p){var o=(card.dataset.owners||'').split(' ').filter(Boolean);var i=o.indexOf(p);if(i>=0)o.splice(i,1);else o.push(p);sortOwners(o);card.dataset.owners=o.join(' ');renderControls(card);mbApplyFilter();persistOwners(card);}
+    function openMenu(card){closeMenu();var o=(card.dataset.owners||'').split(' ').filter(Boolean);var menu=document.createElement('div');menu.className='mb-tagmenu';ORDER.forEach(function(p){var bb=document.createElement('button');bb.type='button';bb.className='mb-tagopt '+p.toLowerCase()+(o.indexOf(p)>=0?' active':'');bb.textContent=p;bb.addEventListener('click',function(e){e.stopPropagation();toggleOwner(card,p);bb.classList.toggle('active');});menu.appendChild(bb);});card.appendChild(menu);setTimeout(function(){document.addEventListener('click',closeMenu,{once:true});},0);}
+    function renderControls(card){
+      var o=(card.dataset.owners||'').split(' ').filter(Boolean);
+      var box=card.querySelector('.mb-owners');if(!box){box=document.createElement('div');box.className='mb-owners';card.appendChild(box);}
+      box.innerHTML=o.map(function(p){return '<span class="owner '+p.toLowerCase()+'">'+p+'</span>';}).join('')+'<button class="mb-tagedit" type="button" title="加入/移除購買人">＋</button>';
+      box.querySelector('.mb-tagedit').addEventListener('click',function(e){e.stopPropagation();openMenu(card);});
+      if(!card.querySelector('.mb-del')){var del=document.createElement('button');del.className='mb-del';del.type='button';del.title='刪除商品';del.textContent='×';del.addEventListener('click',function(e){e.stopPropagation();if(confirm('確定要刪除這個商品嗎？'))removeCard(card);});card.appendChild(del);}
+    }
+    function removeCard(card){var id=card.dataset.id;if(card.dataset.custom==='1'){backend.remove(id);}else{backend.write('del__'+id,{kind:'deleted',cardId:id});}card.classList.add('mb-removed');card.style.display='none';}
+    function persistOwners(card){var id=card.dataset.id,owners=card.dataset.owners||'';if(card.dataset.custom==='1'){var d=lastItems[id]||{};backend.write(id,{kind:'custom',owners:owners,title:card.querySelector('.mb-name').textContent,desc:card.querySelector('.mb-desc')?card.querySelector('.mb-desc').textContent:'',img:(card.querySelector('.mb-pic img')||{}).src||d.img||''});}else{backend.write('ov__'+id,{kind:'override',cardId:id,owners:owners});}}
+    function makeCustom(id,d){var card=document.createElement('div');card.className='mb-card';card.dataset.id=id;card.dataset.custom='1';card.dataset.owners=d.owners||'';card.innerHTML='<div class="mb-pic gc"><div class="ph">自訂</div><img src="'+(d.img||'')+'" alt="'+esc(d.title||'')+'"></div><div class="mb-body"><div class="mb-name">'+esc(d.title||'')+'</div><div class="mb-desc">'+esc(d.desc||'')+'</div></div>';list.appendChild(card);renderControls(card);return card;}
+    function updateCustom(card,d){card.dataset.owners=d.owners||'';var im=card.querySelector('.mb-pic img');if(im&&d.img&&im.getAttribute('src')!==d.img)im.src=d.img;var nm=card.querySelector('.mb-name');if(nm&&nm.textContent!==(d.title||''))nm.textContent=d.title||'';var de=card.querySelector('.mb-desc');if(de&&de.textContent!==(d.desc||''))de.textContent=d.desc||'';renderControls(card);}
+    function renderAll(items){
+      lastItems=items||{};var ov={},del={},cu={};
+      Object.keys(lastItems).forEach(function(k){var d=lastItems[k];if(!d)return;if(d.kind==='override')ov[d.cardId]=d.owners||'';else if(d.kind==='deleted')del[d.cardId]=1;else if(d.kind==='custom')cu[k]=d;});
+      origCards().forEach(function(card){var id=card.dataset.id;if(del[id]){card.classList.add('mb-removed');card.style.display='none';return;}card.classList.remove('mb-removed');card.dataset.owners=(ov[id]!=null?ov[id]:defaults[id]);renderControls(card);});
+      Array.prototype.forEach.call(list.querySelectorAll('.mb-card[data-custom="1"]'),function(card){if(!cu[card.dataset.id])card.remove();});
+      Object.keys(cu).forEach(function(id){var card=selId(id);if(card&&card.dataset.custom==='1')updateCustom(card,cu[id]);else makeCustom(id,cu[id]);});
+      mbApplyFilter();
+    }
+    // ---- 本機儲存後端（預設；未接雲端時使用）----
+    var LS='kr_mustbuy_v2';
+    var localBackend={_cb:null,_mem:{},subscribe:function(cb){this._cb=cb;try{this._mem=JSON.parse(localStorage.getItem(LS)||'{}');}catch(e){this._mem={};}cb(this._mem);},write:function(id,data){this._mem[id]=data;this._p();if(this._cb)this._cb(this._mem);},remove:function(id){delete this._mem[id];this._p();if(this._cb)this._cb(this._mem);},_p:function(){try{localStorage.setItem(LS,JSON.stringify(this._mem));}catch(e){}}};
+    backend=localBackend;backend.subscribe(renderAll);
+    function setBackend(b){backend=b;b.subscribe(renderAll);}
+    // ---- 新增商品表單 ----
+    var addBtn=document.getElementById('mbAddBtn'),form=document.getElementById('mbAddForm');
+    if(addBtn&&form){
+      var fileInput=document.getElementById('afFile'),preview=document.getElementById('afPreview'),dropInner=document.getElementById('afDropInner');
+      var titleI=document.getElementById('afTitle'),descI=document.getElementById('afDesc');
+      var submitB=document.getElementById('afSubmit'),cancelB=document.getElementById('afCancel');
+      var imgData=null;
+      function resetForm(){imgData=null;preview.style.display='none';preview.removeAttribute('src');dropInner.style.display='block';titleI.value='';descI.value='';fileInput.value='';form.querySelectorAll('.af-own').forEach(function(o){o.classList.remove('active');});}
+      function openForm(){resetForm();var a2=overlay.querySelector('.fbtn.active');var fil=a2?a2.getAttribute('data-filter'):'all';if(fil!=='all'){var o=form.querySelector('.af-own[data-own="'+fil+'"]');if(o)o.classList.add('active');}form.hidden=false;}
+      function closeForm(){form.hidden=true;}
+      addBtn.addEventListener('click',function(e){e.stopPropagation();form.hidden?openForm():closeForm();});
+      cancelB.addEventListener('click',closeForm);
+      form.querySelectorAll('.af-own').forEach(function(o){o.addEventListener('click',function(){o.classList.toggle('active');});});
+      function centerCrop(img){var size=Math.min(img.width,img.height),sx=(img.width-size)/2,sy=(img.height-size)/2,OUT=480;var c=document.createElement('canvas');c.width=OUT;c.height=OUT;var ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,OUT,OUT);ctx.drawImage(img,sx,sy,size,size,0,0,OUT,OUT);return c.toDataURL('image/jpeg',0.85);}
+      function cutoutSquare(img){var mx=Math.min(1,900/Math.max(img.width,img.height));var w=Math.max(1,Math.round(img.width*mx)),h=Math.max(1,Math.round(img.height*mx));var wc=document.createElement('canvas');wc.width=w;wc.height=h;var wx=wc.getContext('2d');wx.drawImage(img,0,0,w,h);var id;try{id=wx.getImageData(0,0,w,h);}catch(e){return centerCrop(img);}var data=id.data;function corner(x,y){var i=(y*w+x)*4;return [data[i],data[i+1],data[i+2]];}var cs=[corner(0,0),corner(w-1,0),corner(0,h-1),corner(w-1,h-1)];var bg=[0,0,0];cs.forEach(function(c){bg[0]+=c[0];bg[1]+=c[1];bg[2]+=c[2];});bg[0]/=4;bg[1]/=4;bg[2]/=4;var t2=62*62;var vis=new Uint8Array(w*h),st=[],x,y;for(x=0;x<w;x++){st.push(x);st.push((h-1)*w+x);}for(y=0;y<h;y++){st.push(y*w);st.push(y*w+w-1);}while(st.length){var idx=st.pop();if(vis[idx])continue;var i4=idx*4;var dr=data[i4]-bg[0],dg=data[i4+1]-bg[1],db=data[i4+2]-bg[2];if(dr*dr+dg*dg+db*db>t2)continue;vis[idx]=1;data[i4+3]=0;var cx=idx%w,cy=(idx-cx)/w;if(cx+1<w)st.push(idx+1);if(cx-1>=0)st.push(idx-1);if(cy+1<h)st.push(idx+w);if(cy-1>=0)st.push(idx-w);}wx.putImageData(id,0,0);var minX=w,minY=h,maxX=-1,maxY=-1;for(y=0;y<h;y++)for(x=0;x<w;x++){if(data[(y*w+x)*4+3]>16){if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}}if(maxX<0){minX=0;minY=0;maxX=w-1;maxY=h-1;}var bw=maxX-minX+1,bh=maxY-minY+1;var OUT=480,pad=0.88;var oc=document.createElement('canvas');oc.width=OUT;oc.height=OUT;var ox=oc.getContext('2d');ox.fillStyle='#fff';ox.fillRect(0,0,OUT,OUT);var sc=Math.min(OUT*pad/bw,OUT*pad/bh);var dw=bw*sc,dh=bh*sc;ox.drawImage(wc,minX,minY,bw,bh,(OUT-dw)/2,(OUT-dh)/2,dw,dh);return oc.toDataURL('image/jpeg',0.85);}
+      fileInput.addEventListener('change',function(){var fl=fileInput.files&&fileInput.files[0];if(!fl)return;var img=new Image();img.onload=function(){try{imgData=cutoutSquare(img);}catch(e){imgData=centerCrop(img);}preview.src=imgData;preview.style.display='block';dropInner.style.display='none';URL.revokeObjectURL(img.src);};img.src=URL.createObjectURL(fl);});
+      submitB.addEventListener('click',function(){var owners=[];form.querySelectorAll('.af-own.active').forEach(function(o){owners.push(o.getAttribute('data-own'));});var title=titleI.value.trim(),desc=descI.value.trim();if(!owners.length){toast('請先選擇誰要買');return;}if(!imgData){toast('請先上傳圖片');return;}if(!title){toast('請輸入品項標題');return;}sortOwners(owners);backend.write('c'+Date.now(),{kind:'custom',owners:owners.join(' '),title:title,desc:desc,img:imgData});closeForm();toast('已新增到清單');});
+    }
+    return {setBackend:setBackend};
+  })();
+</script>
+<!-- ===== 跨裝置雲端同步：Firebase Firestore（未填設定則自動使用本機儲存）===== -->
+<script type="module">
+  // 【步驟一】把下面 6 個「貼上…」換成你自己 Firebase 專案的設定值（教學見同資料夾的 setup 說明）
+  const firebaseConfig = {
+    apiKey: "AIzaSyC6RT4F7PSNr2gHHg4aEPKWTQ3uwoMMfZ8",
+    authDomain: "korea-trip-2026-c6d5e.firebaseapp.com",
+    projectId: "korea-trip-2026-c6d5e",
+    storageBucket: "korea-trip-2026-c6d5e.firebasestorage.app",
+    messagingSenderId: "285215751271",
+    appId: "1:285215751271:web:4dc65388bc7ec2564328c2"
+  };
+  if (!/貼上/.test(firebaseConfig.apiKey)) {
+    try {
+      const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js");
+      const { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } =
+        await import("https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js");
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const COL = "mustbuy";
+      const backend = {
+        subscribe(cb){ onSnapshot(collection(db, COL), function(snap){ const m={}; snap.forEach(function(d){ m[d.id]=d.data(); }); cb(m); }); },
+        write(id, data){ setDoc(doc(db, COL, id), data); },
+        remove(id){ deleteDoc(doc(db, COL, id)); }
+      };
+      if (window.MB && window.MB.setBackend) window.MB.setBackend(backend);
+      console.log("[必買清單] 已連上 Firebase，跨裝置同步中");
+    } catch (e) {
+      console.warn("[必買清單] Firebase 連線失敗，改用本機儲存：", e);
+    }
+  }
 </script>
 </body>
 </html>
